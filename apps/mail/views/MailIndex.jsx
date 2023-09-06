@@ -21,7 +21,7 @@ export function MailIndex() {
                 <MailNav></MailNav>
                 <input className="search"></input>
             
-            <section className="mail-list">
+            <section className="mails">
                 <MailList mails={mails}></MailList>
             </section>
         </div>

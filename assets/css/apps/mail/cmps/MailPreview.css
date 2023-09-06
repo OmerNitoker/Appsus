@@ -1,0 +1,24 @@
+.mail-preview{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr min-content;
+}
+
+.mail-preview .date{
+    justify-self: end;
+    grid-column: 2/3;
+}
+
+.mail-preview .star{
+    color: rgb(204, 204, 204);
+    justify-self: end;
+    cursor: pointer;
+    grid-row: 3/4;
+    font-size: 1em;
+}
+
+.mail-preview .mail-body{
+    grid-row: 3/4;
+    justify-self: start;
+
+}
