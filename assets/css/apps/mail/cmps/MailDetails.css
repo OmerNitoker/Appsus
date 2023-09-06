@@ -1,5 +1,24 @@
 .mail-details{
     display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: 1em;
+    gap:1em;
 
+}
+
+.mail-details .subject{
+    grid-column: 1/-1;
+}
+
+.mail-details .from{
+    grid-column: 1;
+}
+
+.mail-details .time{
+    justify-self: end;
+}
+
+.mail-details .mail-body{
+    margin-block-start: 1em;
+    grid-column: 1/-1;
 }

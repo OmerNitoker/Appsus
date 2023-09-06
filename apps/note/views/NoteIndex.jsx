@@ -1,7 +1,5 @@
 
 
-export function NoteIndex() {
-    return (
-        
-    )
-}
+// export function NoteIndex() {
+//     return ()
+// }
