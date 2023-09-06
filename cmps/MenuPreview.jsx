@@ -4,7 +4,8 @@ const { NavLink } = ReactRouterDOM
 export function MenuPreview() {
     { console.log('Menu preview') }
     return (
-        <nav className="header-menu">
+        <nav className="flex column">
+            <div>
             <NavLink to="/">
                 <span className="material-symbols-outlined">
                     home
@@ -15,6 +16,8 @@ export function MenuPreview() {
                     mail
                 </span>
             </NavLink>
+            </div>
+            <div>
             <NavLink to="/note">
                 <span className="material-symbols-outlined">
                     description
@@ -25,6 +28,7 @@ export function MenuPreview() {
                     menu_book
                 </span>
             </NavLink>
+            </div>
         </nav>
     )
 }

@@ -12,16 +12,13 @@ export function AppHeader() {
         <Link to="/">
             <h3>Appsus!</h3>
         </Link>
-        <span className="material-symbols-outlined" style={{ cursor: 'pointer' }}
+        <span className="material-symbols-outlined menu-header-btn" style={{ cursor: 'pointer' }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}>
             apps
-        </span>
-        {console.log(isMenuOpen)}
-        <div>
+            <div className="menu-header">
             {isMenuOpen && <MenuPreview />}
         </div>
-
-
+        </span>
     </header>
     )
 }
