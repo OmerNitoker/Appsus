@@ -1,19 +1,27 @@
-const { Link, NavLink } = ReactRouterDOM
+const { useState } = React
+
+const { Link } = ReactRouterDOM
+
+import { MenuPreview } from "./MenuPreview.jsx"
 
 export function AppHeader() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    return <header className="app-header">
+    return (
+    <header className="app-header">
         <Link to="/">
-            <h3>LOGO!</h3>
+            <h3>Appsus!</h3>
         </Link>
-        <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+        <span className="material-symbols-outlined" style={{ cursor: 'pointer' }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            apps
+        </span>
+        {console.log(isMenuOpen)}
+        <div>
+            {isMenuOpen && <MenuPreview />}
+        </div>
 
-            <NavLink className="material-symbols-outlined" to="/note">menu</NavLink>
 
-        </nav>
     </header>
+    )
 }
