@@ -11,7 +11,18 @@ export const mailService = {
     getEmptyMail,
     save,
     remove,
-    getUnreadCount
+    getUnreadCount,
+    star
+}
+
+function star(mailId) {
+    return get(mailId)
+        .then(mail => {
+            mail.isStarred = true
+            save(mail)
+            console.log(mail)
+        })
+
 }
 function getUnreadCount() {
     return mailService.query('inbox')
@@ -40,8 +51,8 @@ function getEmptyMail() {
         sentAt: 1551133930594,
         removedAt: null,
         from: getUser().email,
-        to: ''
-
+        to: '',
+        isStarred: false
     }
 }
 function getUser() {
@@ -79,11 +90,17 @@ function query(mailsToShow) {
             }
             if (mailsToShow.isUnread) {
                 mails = mails.filter(mail => !mail.isRead)
-            } 
+            }
             // else if (!mailsToShow.isRead) {
             //     // console.log('hi')
             //     mails = mails.filter(mail => !mail.isRead)
             // }
+
+            if (mailsToShow.sortBy === 'date') {
+                mails = mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt)
+            } else if (mailsToShow.sortBy === 'subject') {
+                mails = mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
+            }
             // console.log(mails)
             return mails
         })
@@ -119,7 +136,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         },
         {
             id: 'e102',
@@ -129,7 +147,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         },
         {
             id: 'e103',
@@ -139,7 +158,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         }
 
 

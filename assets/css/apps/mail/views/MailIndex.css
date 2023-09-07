@@ -1,7 +1,7 @@
  /* mail index  */
  .mail-index {
      display: grid;
-     grid-template-columns: 1fr auto auto;
+     grid-template-columns: 1fr auto auto auto;
      gap: 1em;
 
  }
@@ -27,8 +27,24 @@
  .mail-index .active:hover{
     background-color: rgb(153, 206, 224);
  }
+.mail-index .sort{
+    height: 2.5em;
+    width: 6em;
+    justify-self: end;
+    align-self: center;
+    background-color: white;
+    border: 1px solid rgb(63, 63, 63);
+    color: rgb(63, 63, 63);
+    border-radius: 10px;
+    cursor: pointer;  
+}
+
+.mail-index .sort:hover{
+    background-color: rgb(241, 241, 241);
+
+}
  .mail-index .search {
-     grid-column: 3/4;
+     grid-column: 4/5;
      place-self: center;
      margin-inline-end: 1em;
  }

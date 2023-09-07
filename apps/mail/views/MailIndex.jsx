@@ -26,7 +26,14 @@ export function MailIndex() {
         let value = target.value
         onSetMailsToShow(field, value)
     }
+    // onStar('e101')
+    function onStar(mailId) {
+        console.log('hi')
+        mailService.star(mailId)
+        // mailService.get(mailId)
+            // .then(res => console.log(res))
 
+    }
     if (!mails) return <div>Loading...</div>
     const active = isUnread ? 'active' : ''
     return (
@@ -34,11 +41,19 @@ export function MailIndex() {
 
             <MailNav onSetMailsToShow={onSetMailsToShow} />
             <button onClick={() => onSetMailsToShow('isUnread', !isUnread)} className={'is-unread ' + active}>Is unread</button>
+            <select className="sort" name="sortBy" id="date" onChange={handleChange}>
+                <option value="">Sort by</option>
+                <option value="date">Date</option>
+                <option value="subject">Subject</option>
+
+                {/* <option value="3">3</option> */}
+            </select>
+
             <input onChange={handleChange} name="txt" placeholder="Search" className="search"></input>
 
 
             <section className="mails">
-                <MailList mails={mails} ></MailList>
+                <MailList mails={mails} onStar={onStar}></MailList>
             </section>
         </div>
     )
