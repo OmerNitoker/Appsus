@@ -12,7 +12,12 @@ export const mailService = {
     save,
     remove
 }
-
+// function getUnreadCount(){
+//     mailService.query('inbox')
+//     .then(mails=>{
+//         unReadMails= mails.filter(mail=>!mail.isRead)
+//     })
+// }
 function remove(mailId) {
     return get(mailId)
         .then(mail => {
@@ -27,7 +32,7 @@ function getEmptyMail() {
     return {
         subject: '',
         body: '',
-        isRead:true,
+        isRead: true,
         sentAt: 1551133930594,
         removedAt: null,
         from: getUser().email,
@@ -60,7 +65,7 @@ function query(mailsToShow) {
             } else if (mailsToShow === 'inbox') {
                 mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
             } else if (mailsToShow === 'sent') {
-                mails = mails.filter(mail => mail.from === userMail)
+                mails = mails.filter(mail => mail.from === userMail && !mail.removedAt)
             }
             return mails
         })

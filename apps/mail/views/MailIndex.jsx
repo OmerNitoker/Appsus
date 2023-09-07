@@ -18,6 +18,7 @@ export function MailIndex() {
     function onSetMailsToShow(mailsToShow) {
         setMailsToShow(mailsToShow)
     }
+ 
 
     if (!mails) return <div>Loading...</div>
     return (
