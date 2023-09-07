@@ -80,7 +80,7 @@ function _createNotes() {
                 id: 'n102',
                 type: 'NoteImg',
                 isPinned: false,
-                info: { url: 'http://some-img/me', title: 'Bobi and Me' },
+                info: { url: "http://animal.discovery.com/mammals/cheetah/pictures/cheetah-picture.jpg", title: 'Bobi and Me' },
                 style: { backgroundColor: '#00d' }
             },
             {
