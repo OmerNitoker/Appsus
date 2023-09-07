@@ -11,7 +11,8 @@ export const noteService = {
     getFilterBy,
     setFilterBy,
     getDefaultFilter,
-  }
+    togglePin
+}
 
 const NOTES_KEY = 'notesDB'
 var gFilterBy = { txt: '', type: '', isPinned: false }
@@ -20,8 +21,9 @@ _createNotes()
 function query(filterBy) {
     return storageService.query(NOTES_KEY).then(notes => {
         if (filterBy.txt) {
-            const regex = new RegExp(filterBy.txt, 'i')
-            notes = notes.filter(note => regex.test(note.txt))
+            notes = notes.filter(note => filterByTxt(note, filterBy.txt))
+            // const regex = new RegExp(filterBy.txt, 'i')
+            // notes = notes.filter(note => regex.test(note.info.txt ))
         }
         if (filterBy.type) {
             notes = notes.filter(note => note.type === filterBy.type)
@@ -72,7 +74,7 @@ function _createNotes() {
                 id: 'n101',
                 createdAt: 1112222,
                 type: 'NoteTxt',
-                isPinned: true,
+                isPinned: false,
                 style: { backgroundColor: '#00d' },
                 info: { txt: 'Fullstack Me Baby!' }
             },
@@ -98,4 +100,39 @@ function _createNotes() {
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
     }
+}
+
+function filterByTxt(note, text) {
+    switch (note.type) {
+        case 'NoteTxt':
+            if (note.info.txt.includes(text)) return true
+            break
+        case 'NoteImg':
+            if (note.info.title.includes(text)) return true
+            break
+        case 'NoteVideo':
+            if (note.info.title.includes(text)) return true
+            break
+        case 'NoteTodos':
+            if (note.info.title.includes(text)) return true
+            for (let i = 0; i < note.info.todos.length; i++) {
+                console.log('note.info.todos:', note.info.todos)
+
+                if (note.info.todos[i].txt.includes(text)) return true
+            }
+            // note.info.todos.forEach(todo => {
+            //     if(todo.txt.includes(text)) return true
+            // })
+            break
+        default: return false
+    }
+}
+
+function togglePin(noteId) {
+    get(noteId)
+        .then((note) => {
+            note.isPinned = !note.isPinned
+            console.log('note:', note)
+            save(note)
+        })
 }
