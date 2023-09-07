@@ -18,7 +18,7 @@ export function NoteList({ notes, onRemoveNote }) {
                         <span className="material-symbols-outlined">
                             edit_note
                         </span>
-                        <span className="material-symbols-outlined">
+                        <span className="material-symbols-outlined" onClick={() => onRemoveNote(note.id)}>
                             delete
                         </span>
                         <span className="material-symbols-outlined">

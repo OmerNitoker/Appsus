@@ -14,7 +14,7 @@ export const noteService = {
   }
 
 const NOTES_KEY = 'notesDB'
-var gFilterBy = { txt: '', type: '', pinned: false }
+var gFilterBy = { txt: '', type: '', isPinned: false }
 _createNotes()
 
 function query(filterBy) {
