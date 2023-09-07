@@ -6,24 +6,24 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
+    const [mailsToShow, setMailsToShow] = useState('inbox')
 
     useEffect(() => {
-        mailService.query()
+        mailService.query(mailsToShow)
             // .then(res=>console.log(res))
             .then(setMails)
             .catch(err => console.log('err:', err))
-    }, [])
+    }, [mailsToShow])
 
-    // function onMailClick(mailId) {
-    //     console.log(mailId)
-        
-    // }
+    function onSetMailsToShow(mailsToShow) {
+        setMailsToShow(mailsToShow)
+    }
 
     if (!mails) return <div>Loading...</div>
     return (
         <div className="mail-index">
 
-            <MailNav></MailNav>
+            <MailNav onSetMailsToShow={onSetMailsToShow} />
             <input placeholder="Search" className="search"></input>
 
             <section className="mails">

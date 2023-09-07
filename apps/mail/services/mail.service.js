@@ -9,19 +9,29 @@ export const mailService = {
     get,
     getUser,
     getEmptyMail,
-    save
+    save,
+    remove
 }
 
-
+function remove(mailId) {
+    return get(mailId)
+        .then(mail => {
+            if (!mail.removedAt) {
+                mail.removedAt = Date.now()
+                save(mail)
+            } else storageService.remove(MAIL_KEY, mailId)
+        })
+}
 
 function getEmptyMail() {
     return {
-        subject:'',
-        body:'',
-        sentAt:1551133930594,
-        removedAt:null,
-        from:getUser().email,
-        to:''
+        subject: '',
+        body: '',
+        isRead:true,
+        sentAt: 1551133930594,
+        removedAt: null,
+        from: getUser().email,
+        to: ''
 
     }
 }
@@ -41,14 +51,25 @@ function save(mail) {
     }
 }
 
-function query() {
+function query(mailsToShow) {
     return storageService.query(MAIL_KEY)
+        .then(mails => {
+            const userMail = getUser().email
+            if (mailsToShow === 'trash') {
+                mails = mails.filter(mail => mail.removedAt)
+            } else if (mailsToShow === 'inbox') {
+                mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
+            } else if (mailsToShow === 'sent') {
+                mails = mails.filter(mail => mail.from === userMail)
+            }
+            return mails
+        })
 }
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
         .then(mail => {
-            mail.isRead=true
+            mail.isRead = true
             save(mail)
             mail = _setNextPrevMailId(mail)
             return mail
