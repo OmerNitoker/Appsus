@@ -10,13 +10,9 @@ export const mailService = {
     getUser,
     getEmptyMail,
     save
-    // setMailRead
 }
 
-// function setMailRead(mailId){
-//     get(mailId)
-//     .then(mail=>mail.isRead=!mail.isRead)
-// }
+
 
 function getEmptyMail() {
     return {
@@ -52,6 +48,8 @@ function query() {
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
         .then(mail => {
+            mail.isRead=true
+            save(mail)
             mail = _setNextPrevMailId(mail)
             return mail
         })

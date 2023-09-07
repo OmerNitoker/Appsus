@@ -5,9 +5,11 @@
     grid-template-rows: min-content 1fr;
 }
 
+.mail-compose :first-child{
+    justify-self: start;
+}
 .mail-compose :nth-child(2n) {
     justify-self: end;
-
 }
 
 .mail-compose .compose {
@@ -28,4 +30,5 @@
 
 .mail-compose .compose :last-child{
     border: none;
+
 }

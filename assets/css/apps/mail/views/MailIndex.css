@@ -1,12 +1,14 @@
  /* mail index  */
  .mail-index {
      display: grid;
-     grid-template-columns: 1fr 1fr;
+     grid-template-columns: 1fr auto;
 
  }
 
  .mail-index .search {
      grid-column: 2/3;
+     place-self: center;
+     margin-inline-end: 1em;
  }
 
  .mail-index .mails {
@@ -29,6 +31,8 @@
      padding: 1em;
      cursor: pointer;
      color: rgb(226, 72, 72);
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the button */
+
  }
 
  

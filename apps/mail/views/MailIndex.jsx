@@ -16,7 +16,7 @@ export function MailIndex() {
 
     // function onMailClick(mailId) {
     //     console.log(mailId)
-    //     mailService.setMailRead(mailId)
+        
     // }
 
     if (!mails) return <div>Loading...</div>
@@ -24,7 +24,7 @@ export function MailIndex() {
         <div className="mail-index">
 
             <MailNav></MailNav>
-            <input className="search"></input>
+            <input placeholder="Search" className="search"></input>
 
             <section className="mails">
                 <MailList mails={mails} ></MailList>

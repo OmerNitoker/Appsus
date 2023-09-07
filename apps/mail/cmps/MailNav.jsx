@@ -4,10 +4,14 @@ export function MailNav() {
     const [isOn, setIsOn] = useState(false)
 
     return (
-        <div>
-            <nav onClick={()=>setIsOn(!isOn)} className="material-symbols-outlined">menu</nav>
+        <div className="mail-nav">
+            <nav onClick={() => setIsOn(!isOn)} className="material-symbols-outlined">menu</nav>
             {isOn && <section className="mail-nav-content">
-                <h2>Inbox</h2>
+                <div>
+                    <span className="material-symbols-outlined">inbox</span>
+                    <h5>Inbox</h5>
+                </div>
+
                 <h2>Starred</h2>
                 <h2>Sent</h2>
                 <h2>Draft</h2>

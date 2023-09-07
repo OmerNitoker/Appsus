@@ -1,4 +1,11 @@
+.mail-nav{
+    margin:1em;
+}
+
 .mail-nav-content{
     position: absolute;
-    
+    background-color: white;
+    height: 100%;
+    /* display: grid; */
+
  }
