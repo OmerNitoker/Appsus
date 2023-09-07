@@ -27,6 +27,12 @@ export function MailDetails() {
         // navigate(-1)
     }
 
+    function onRemoveMail() {
+        mailService.remove(params.mailId)
+            .then(onBack)
+
+    }
+
     if (!mail) return <div>Loading...</div>
     return (
         <section className="mail-details">
@@ -34,7 +40,7 @@ export function MailDetails() {
                 arrow_back_ios
             </span>
             <div className="options">
-                <span className="material-symbols-outlined">
+                <span onClick={onRemoveMail} className="material-symbols-outlined">
                     delete
                 </span>
                 <span className="material-symbols-outlined">

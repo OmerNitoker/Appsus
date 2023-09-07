@@ -1,4 +1,11 @@
+import { utilService } from "../../../services/util.service.js"
 export function MailPreview({ mail }) {
+
+    // function getFormattedDate(date){
+    //     const day = date.getDate()
+    //    const month= utilService.getMonthName(date)
+    //    return `${month} ${day}`
+    // }
     const mailRead = mail.isRead ? 'read' : ''
     return (
         <article className="mail-preview">

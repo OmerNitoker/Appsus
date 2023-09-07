@@ -1,21 +1,46 @@
 const { useState } = React
 
-export function MailNav() {
+export function MailNav({ onSetMailsToShow }) {
     const [isOn, setIsOn] = useState(false)
+
+    function onShowMails(mailsToshow) {
+        setIsOn(!isOn)
+        onSetMailsToShow(mailsToshow)
+    }
 
     return (
         <div className="mail-nav">
             <nav onClick={() => setIsOn(!isOn)} className="material-symbols-outlined">menu</nav>
             {isOn && <section className="mail-nav-content">
-                <div>
+                <div onClick={() => onShowMails('inbox')}>
                     <span className="material-symbols-outlined">inbox</span>
-                    <h5>Inbox</h5>
+                    <h1>Inbox</h1>
+                    {/* <h1></h1> */}
                 </div>
-
-                <h2>Starred</h2>
-                <h2>Sent</h2>
-                <h2>Draft</h2>
-                <h2>Trash</h2>
+                <div>
+                    <span className="material-symbols-outlined">
+                        star
+                    </span>
+                    <h1>Starred</h1>
+                </div>
+                <div onClick={() => onShowMails('sent')}>
+                    <span className="material-symbols-outlined">
+                        send
+                    </span>
+                    <h1 >Sent</h1>
+                </div>
+                <div>
+                    <span className="material-symbols-outlined">
+                        draft
+                    </span>
+                    <h1>Draft</h1>
+                </div>
+                <div onClick={() => onShowMails('trash')}>
+                    <span className="material-symbols-outlined">
+                        delete
+                    </span>
+                    <h1 >Trash</h1>
+                </div>
             </section>}
         </div>
     )
