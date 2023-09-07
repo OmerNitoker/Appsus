@@ -33,10 +33,10 @@ export function MailDetails() {
             <span onClick={onBack} className="material-symbols-outlined">
                 arrow_back_ios
             </span>
-            <h1>{mail.subject}</h1>
-            <h1>{mail.from}</h1>
-            <h1>{mail.sentAt}</h1>
-            <h1>{mail.body}</h1>
+            <h2 className="subject">{mail.subject}</h2>
+            <h5 className="from">{mail.from}</h5>
+            <h5  className="time">{mail.sentAt}</h5>
+            <h1 className="mail-body">{mail.body}</h1>
         </section>
     )
 }

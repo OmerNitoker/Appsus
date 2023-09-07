@@ -9,20 +9,25 @@ export function MailIndex() {
 
     useEffect(() => {
         mailService.query()
-        // .then(res=>console.log(res))
+            // .then(res=>console.log(res))
             .then(setMails)
             .catch(err => console.log('err:', err))
     }, [])
 
+    // function onMailClick(mailId) {
+    //     console.log(mailId)
+    //     mailService.setMailRead(mailId)
+    // }
+
     if (!mails) return <div>Loading...</div>
     return (
         <div className="mail-index">
-            
-                <MailNav></MailNav>
-                <input className="search"></input>
-            
+
+            <MailNav></MailNav>
+            <input className="search"></input>
+
             <section className="mails">
-                <MailList mails={mails}></MailList>
+                <MailList mails={mails} ></MailList>
             </section>
         </div>
     )
