@@ -36,8 +36,8 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
     const { txt, type, pinned } = filterByToEdit
 
     return (
-        <section className="note-filter">
-            <form onSubmit={onSubmitFilter}>
+        <section>
+            <form className="note-filter flex justify-center" onSubmit={onSubmitFilter}>
                 <select name="type" id="type-select" onChange={handleChange}>
                     <option value="">Filter by note type...</option>
                     <option value="txt">Text</option>
@@ -47,9 +47,10 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
                 </select>
 
                 <input value={txt} onChange={handleChange} type='text' placeholder='Search note' id='txt' name='txt' />
-
+                <div>
                 <label htmlFor="pin">Pinned</label>
                 <input type="checkbox" id="pin" name="pinned" value="pin" onChange={handleChange} />
+                </div>
             </form>
         </section>
     )
