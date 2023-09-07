@@ -1,13 +1,18 @@
+import { mailService } from "../services/mail.service.js"
 const { useState } = React
 
 export function MailNav({ onSetMailsToShow }) {
     const [isOn, setIsOn] = useState(false)
+    // const [unreadMailsCount, setUnreadMailsCount]= useState(0)
 
-    function onShowMails(mailsToshow) {
+    function onShowMails(chosenFolder) {
         setIsOn(!isOn)
-        onSetMailsToShow(mailsToshow)
+        onSetMailsToShow('folder',chosenFolder)
     }
-
+    // function mailCount() {
+    //     mailService.getUnreadCount()
+    //     .then(res=>{return res})
+    // }
     return (
         <div className="mail-nav">
             <nav onClick={() => setIsOn(!isOn)} className="material-symbols-outlined">menu</nav>
@@ -15,7 +20,7 @@ export function MailNav({ onSetMailsToShow }) {
                 <div onClick={() => onShowMails('inbox')}>
                     <span className="material-symbols-outlined">inbox</span>
                     <h1>Inbox</h1>
-                    {/* <h1></h1> */}
+                    <h1>{}</h1>
                 </div>
                 <div>
                     <span className="material-symbols-outlined">
@@ -33,7 +38,7 @@ export function MailNav({ onSetMailsToShow }) {
                     <span className="material-symbols-outlined">
                         draft
                     </span>
-                    <h1>Draft</h1>
+                    <h1>Drafts</h1>
                 </div>
                 <div onClick={() => onShowMails('trash')}>
                     <span className="material-symbols-outlined">

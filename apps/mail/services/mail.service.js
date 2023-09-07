@@ -10,14 +10,29 @@ export const mailService = {
     getUser,
     getEmptyMail,
     save,
-    remove
+    remove,
+    getUnreadCount,
+    star
 }
-// function getUnreadCount(){
-//     mailService.query('inbox')
-//     .then(mails=>{
-//         unReadMails= mails.filter(mail=>!mail.isRead)
-//     })
-// }
+
+function star(mailId) {
+    return get(mailId)
+        .then(mail => {
+            mail.isStarred = true
+            save(mail)
+            console.log(mail)
+        })
+
+}
+function getUnreadCount() {
+    return mailService.query('inbox')
+        .then(mails => {
+            const userMail = getUser().email
+            const unReadMails = mails.filter(mail => mail.to === userMail && !mail.isRead)
+            return unReadMails.length
+        })
+}
+
 function remove(mailId) {
     return get(mailId)
         .then(mail => {
@@ -36,8 +51,8 @@ function getEmptyMail() {
         sentAt: 1551133930594,
         removedAt: null,
         from: getUser().email,
-        to: ''
-
+        to: '',
+        isStarred: false
     }
 }
 function getUser() {
@@ -57,16 +72,36 @@ function save(mail) {
 }
 
 function query(mailsToShow) {
+    console.log(mailsToShow)
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            // console.log(mails)
             const userMail = getUser().email
-            if (mailsToShow === 'trash') {
+            if (mailsToShow.folder === 'trash') {
                 mails = mails.filter(mail => mail.removedAt)
-            } else if (mailsToShow === 'inbox') {
+            } else if (mailsToShow.folder === 'inbox') {
                 mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
-            } else if (mailsToShow === 'sent') {
+            } else if (mailsToShow.folder === 'sent') {
                 mails = mails.filter(mail => mail.from === userMail && !mail.removedAt)
             }
+            if (mailsToShow.txt) {
+                const regExp = new RegExp(mailsToShow.txt, 'i')
+                mails = mails.filter(mail => regExp.test(mail.subject))
+            }
+            if (mailsToShow.isUnread) {
+                mails = mails.filter(mail => !mail.isRead)
+            }
+            // else if (!mailsToShow.isRead) {
+            //     // console.log('hi')
+            //     mails = mails.filter(mail => !mail.isRead)
+            // }
+
+            if (mailsToShow.sortBy === 'date') {
+                mails = mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt)
+            } else if (mailsToShow.sortBy === 'subject') {
+                mails = mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
+            }
+            // console.log(mails)
             return mails
         })
 }
@@ -101,7 +136,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         },
         {
             id: 'e102',
@@ -111,7 +147,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         },
         {
             id: 'e103',
@@ -121,7 +158,8 @@ function _createMails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStarred: false
         }
 
 

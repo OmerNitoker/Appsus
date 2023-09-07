@@ -1,14 +1,13 @@
-import { MailCompose } from "../views/MailCompose.jsx"
 import { MailPreview } from "./MailPreview.jsx"
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails }) {
+export function MailList({ mails, onStar }) {
     return (<div>
 
         <ul className="mail-list">
             {mails.map(mail =>
                 <Link key={mail.id} to={`/mail/${mail.id}`}>
-                    <li> <MailPreview mail={mail} />
+                    <li> <MailPreview mail={mail} onStar={onStar}/>
                     </li>
                 </Link>)}
         </ul>
