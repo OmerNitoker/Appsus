@@ -11,7 +11,12 @@ export function MailList({ mails }) {
                     </li>
                 </Link>)}
         </ul>
-
+        <Link to="/mail/compose">
+            <button className="compose">
+                <span className="material-symbols-outlined">edit</span>
+                <span>Compose</span>
+            </button>
+        </Link>
     </div>
     )
 }
