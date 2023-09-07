@@ -2,7 +2,7 @@ import { mailService } from "../services/mail.service.js"
 const { useState } = React
 
 export function MailNav({ onSetMailsToShow }) {
-    const [isOn, setIsOn] = useState(false)
+    const [isOn, setIsOn] = useState(true)
     // const [unreadMailsCount, setUnreadMailsCount]= useState(0)
 
     function onShowMails(chosenFolder) {

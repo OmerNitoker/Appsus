@@ -45,8 +45,6 @@ export function MailIndex() {
                 <option value="">Sort by</option>
                 <option value="date">Date</option>
                 <option value="subject">Subject</option>
-
-                {/* <option value="3">3</option> */}
             </select>
 
             <input onChange={handleChange} name="txt" placeholder="Search" className="search"></input>

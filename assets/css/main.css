@@ -30,3 +30,6 @@
 
 @import './apps/note/cmps/NoteFilter.css';
 @import './apps/note/cmps/NoteList.css';
+
+/* MEDIA QUERIES */
+@import './setup/mq.css';

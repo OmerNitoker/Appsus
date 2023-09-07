@@ -1,9 +1,9 @@
 .mail-nav {
-    margin: 1em;
+    padding: 1em;
 }
 
-.mail-nav .material-symbols-outlined{
-     border-radius: 50%; 
+.mail-nav .material-symbols-outlined {
+    border-radius: 50%;
     /* padding: .4em;    */
 }
 

@@ -10,12 +10,19 @@ export function MailPreview({ mail, onStar }) {
         ev.stopPropagation()
         onStar(mail.id)
     }
-    const mailRead = mail.isRead ? 'read' : ''
+
+    function getTxtToShow(txt,length) {
+        if (txt.length < length) return txt
+        return txt.substring(0, length) + '...'
+        }
+      
+    const mailRead = mail.isRead ? 'lighter' : ''
     return (
         <article className="mail-preview">
             <h6 className={"date " + mailRead}>{mail.sentAt}</h6>
-            <h1 className={mailRead}>{mail.subject}</h1>
-            <h6 className="mail-body">{mail.body}</h6>
+            <h1 className={"from " +mailRead}>{mail.from}</h1>
+            <h1 className={mailRead+ ' subject'}>{getTxtToShow(mail.subject,18)}</h1>
+            <h6 className="mail-body">{getTxtToShow(mail.body,100)}</h6>
             <span onClick={handleClickEvent} className="star material-symbols-outlined">
                 star
             </span>
