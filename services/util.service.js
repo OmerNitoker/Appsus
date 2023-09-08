@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    formatDate
 }
 function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val))
@@ -71,4 +72,20 @@ function getMonthName(date) {
     return monthNames[date.getMonth()]
 }
 
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
 
+    const options = {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+    };
+
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return formattedDate.replace(/\./g, '/');
+}
+
+// Example usage:
+// const timestamp = 1631014800000; // Replace with your timestamp
+// const formattedDate = formatDate(timestamp);
+// console.log(formattedDate);

@@ -50,6 +50,11 @@
 
 }
 
+.mail-nav-content div> :nth-child(3n){
+    font-size: 12px;
+    font-weight:bold;
+    padding-inline-start: 8em;
+}
 /* .mail-nav-content div::before{
     content: '';
     height: 1em;

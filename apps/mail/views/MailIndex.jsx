@@ -8,7 +8,16 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [mailsToShow, setMailsToShow] = useState({ folder: 'inbox' })
     const [isUnread, setIsUnread] = useState(false)
+    const [unReadMails,setUnreadMails]=useState(0)
 
+
+    // function getUnReadMails() {
+    //     mailService.query()
+    //         .then(mails => {
+    //             const unReadMails = mails.filter(mail => mail.isRead === false)
+    //             console.log(unReadMails)
+    //         })
+    // }
     useEffect(() => {
         console.log(isUnread)
         mailService.query(mailsToShow)
@@ -16,6 +25,14 @@ export function MailIndex() {
             .then(setMails)
             .catch(err => console.log('err:', err))
     }, [mailsToShow])
+
+    useEffect(() => {
+        mailService.query(mailsToShow)
+        .then(mails=>{
+            const unReadMails = mails.filter(mail => mail.isRead === false)
+                setUnreadMails(unReadMails.length)
+        })
+            }, [])
 
     function onSetMailsToShow(field, fiterBy) {
         if (field === 'isUnread') setIsUnread(!isUnread)
@@ -31,15 +48,16 @@ export function MailIndex() {
         console.log('hi')
         mailService.star(mailId)
         // mailService.get(mailId)
-            // .then(res => console.log(res))
+        // .then(res => console.log(res))
 
     }
+
     if (!mails) return <div>Loading...</div>
     const active = isUnread ? 'active' : ''
     return (
         <div className="mail-index">
 
-            <MailNav onSetMailsToShow={onSetMailsToShow} />
+            <MailNav onSetMailsToShow={onSetMailsToShow} unReadMails={unReadMails} />
             <button onClick={() => onSetMailsToShow('isUnread', !isUnread)} className={'is-unread ' + active}>Is unread</button>
             <select className="sort" name="sortBy" id="date" onChange={handleChange}>
                 <option value="">Sort by</option>
@@ -47,7 +65,7 @@ export function MailIndex() {
                 <option value="subject">Subject</option>
             </select>
 
-            <input onChange={handleChange} name="txt" placeholder="Search" className="search"></input>
+            <input onChange={handleChange} name="txt" placeholder="   Search mail" className="search"></input>
 
 
             <section className="mails">
