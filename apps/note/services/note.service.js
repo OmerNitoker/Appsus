@@ -16,10 +16,6 @@ export const noteService = {
     createImgNote,
     createVideoNote,
     createTodosNote,
-    updateTxtNote,
-    updateImgNote,
-    updateVideoNote,
-    updateTodosNote
 }
 
 const NOTES_KEY = 'notesDB'
@@ -83,8 +79,7 @@ function _createNotes() {
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: false,
-                // style: { backgroundColor: '#8E9ADA' },
-                style: { backgroundColor: white },
+                style: { backgroundColor: '#8E9ADA' },
                 info: { txt: 'Fullstack Me Baby!' }
             },
             {
@@ -92,8 +87,7 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 info: { url: "https:images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350", title: 'Mitsi' },
-                // style: { backgroundColor: '#8E9ADA' }
-                style: { backgroundColor: white }
+                style: { backgroundColor: '#8E9ADA' }
             },
             {
                 id: 'n103',
@@ -110,8 +104,7 @@ function _createNotes() {
 
                     ]
                 },
-                // style: { backgroundColor: '#8E9ADA' }
-                style: { backgroundColor: white }
+                style: { backgroundColor: '#8E9ADA' }
             }
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
@@ -214,34 +207,34 @@ function createTodosNote(title, txt) {
     return newNote
 }
 
-function updateTxtNote(note, newTxt) {
-    note.info.txt = newTxt
-    return note
-}
+// function updateTxtNote(note, newTxt) {
+//     note.info.txt = newTxt
+//     return note
+// }
 
-function updateImgNote(note, newURL, newTitle) {
-    note.info.url = newURL
-    note.info.title = newTitle
-    return note
-}
+// function updateImgNote(note, newURL, newTitle) {
+//     note.info.url = newURL
+//     note.info.title = newTitle
+//     return note
+// }
 
-function updateVideoNote(note, newURL) {
-    note.info.url = newURL
-    return note
-}
+// function updateVideoNote(note, newURL) {
+//     note.info.url = newURL
+//     return note
+// }
 
-function updateTodosNote(note, newTitle, newTodos) {
-    const list = newTodos.split(',')
-    const todos = []
-    list.forEach(todo => {
-        todos.push({
-            todoId: storageService.makeId(),
-            txt: todo,
-            doneAt: null
-        })
-        note.info.title = newTitle
-        note.info.todos = todos
-    })
-    return note
-}
+// function updateTodosNote(note, newTitle, newTodos) {
+//     const list = newTodos.split(',')
+//     const todos = []
+//     list.forEach(todo => {
+//         todos.push({
+//             todoId: storageService.makeId(),
+//             txt: todo,
+//             doneAt: null
+//         })
+//         note.info.title = newTitle
+//         note.info.todos = todos
+//     })
+//     return note
+// }
 

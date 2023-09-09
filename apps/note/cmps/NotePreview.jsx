@@ -6,6 +6,7 @@ import { NoteTodos } from "./NoteTodos.jsx"
 export function NotePreview( { note } ) {
 
     const {type} = note
+    console.log('we are here:' , type)
 
     return (
         <section>
