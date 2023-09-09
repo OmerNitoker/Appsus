@@ -33,20 +33,24 @@
 
     .mail-index .search-by {
         margin-inline-start: .5em;
+        grid-column: 5;
     }
 
     /* .mail-index .from-filter{
     margin-inline-end: 1em;
 } */
     .mail-index .is-unread {
-        /* grid-row: 2; */
+        grid-row: 1;
         margin-inline-end: 1em;
+        grid-column: 3;
     }
 
     .mail-index .sort {
-        margin: 1em;
-        /* grid-row: 2; */
+        margin: 1em .5em 1em 1em;
+        grid-row: 1;
         justify-self: end;
+        grid-column: 2;
+
 
     }
 

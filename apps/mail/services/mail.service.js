@@ -368,6 +368,93 @@ The Zoom Team`,
             from: 'buzios@chelagarto.com',
             to: 'user@appsus.com',
             isStarred: false
+        },
+        {
+            id: 'e115',
+            subject: `Notification of shipment numbered UZ0514456836Y`,
+            body: `
+            Dear client,
+Thank you for collecting the shipment UZ0514456836Y by Israel Post.
+We suggest you register in the personal area in my post to manage and track the shipments.
+Thank you, Israel Post.
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: 1694279107286,
+            from: 'ReplyP123@postil.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e116',
+            subject: `2023's top bucket list experiences`,
+            body: `
+            The best bucket list experiences
+Dream trip, anyone? From zipping across the desert in an ATV to paragliding more than 6,000 feet in the air, these special experiences came up on top of most travelers' lists. This year's Travelers' Choice Best of the Best Bucket List Experiences are finally in.
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: 1694279107286,
+            from: 'ReplyP123@postil.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e117',
+            subject: `Your order has been accepted on the Super-Pharm website`,
+            body: `Summary of your order
+            For , Muki
+            Below is a summary of the order you placed on the website
+            On 14.07.23 at 13:13
+            
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: null,
+            from: 'shop@super-pharm.co.il',
+            to: 'user@appsus.com',
+            isStarred: true
+        },
+        {
+            id: 'e118',
+            subject: `Life updates`,
+            body: `Hi Mom,
+            how are you?
+            how is Dad?
+            I'm doing great!
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: null,
+            from: 'user@appsus.com',
+            to: 'mom@mail.com',
+            isStarred: false
+        },
+        {
+            id: 'e119',
+            subject: `Regarding Our Upcoming Meeting`,
+            body: `Dear John Doe,
+
+            I hope this email finds you well. I wanted to reach out and discuss a business opportunity that I believe aligns perfectly with your expertise and interests.
+            
+            I'm writing to confirm our meeting scheduled for:
+            
+            Date: Thursday, September 15th, 2023
+            Time: 2:00 PM
+            Location: ABC Conference Room
+            
+            During our meeting, we will go over the details of the project and explore how we can collaborate effectively. If you have any questions or need additional information before the meeting, please don't hesitate to reach out.
+            
+            Looking forward to our discussion and the potential for a fruitful partnership.
+            
+            Best regards
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: null,
+            from: 'user@appsus.com',
+            to: 'John@mail.com',
+            isStarred: false
         }
 
 
