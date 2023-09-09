@@ -84,7 +84,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 // style: { backgroundColor: '#8E9ADA' },
-                style: { backgroundColor: 'white' },
+                style: { backgroundColor: white },
                 info: { txt: 'Fullstack Me Baby!' }
             },
             {
@@ -93,7 +93,7 @@ function _createNotes() {
                 isPinned: false,
                 info: { url: "https:images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350", title: 'Mitsi' },
                 // style: { backgroundColor: '#8E9ADA' }
-                style: { backgroundColor: 'white' }
+                style: { backgroundColor: white }
             },
             {
                 id: 'n103',
@@ -111,7 +111,7 @@ function _createNotes() {
                     ]
                 },
                 // style: { backgroundColor: '#8E9ADA' }
-                style: { backgroundColor: 'white' }
+                style: { backgroundColor: white }
             }
         ]
         utilService.saveToStorage(NOTES_KEY, notes)

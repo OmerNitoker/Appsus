@@ -7,8 +7,7 @@ export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDu
     console.log('notes before render:', notes)
     return (
         <ul className='notes-container'>
-            {notes.map(note => (
-                
+            {notes.map(note => (  
                 <li className="note" style={{ backgroundColor: note.style.backgroundColor }} key={note.id}>
                     <NotePreview note={note} />
                     <section className="icons">
