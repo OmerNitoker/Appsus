@@ -11,29 +11,10 @@
 
  }
 
- /* Define the keyframes for the animation */
- @keyframes colorChange {
-     0% {
-         color: #ff5733;
-         /* Start with one text color */
-     }
-
-     50% {
-         color: #33ff57;
-         /* Change to a different text color at 50% of the animation */
-     }
-
-     100% {
-         color: #ff5733;
-         /* Return to the original text color */
-     }
- }
-
- /* Apply the animation to the h2 element */
  .home h2 {
      margin-block-start: 2em;
-     animation: colorChange 3s ease-in-out infinite;
-     /* Animation name, duration, timing function, and iteration count */
+     font-size: 2.7em;
+     letter-spacing: .1em;
  }
 
  .home .app-benefits {

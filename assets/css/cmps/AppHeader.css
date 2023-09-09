@@ -12,7 +12,9 @@ header {
 }
 
 .app-header h3 {
-    margin-inline-start: 2em ;
+    margin-inline-start: 2em;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .menu-header-btn {
@@ -28,6 +30,8 @@ header {
     border: solid 2px black;
     background-color: white;
     border-radius: 1em;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
 }
 
 /* nav a {
