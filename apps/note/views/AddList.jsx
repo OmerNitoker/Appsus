@@ -2,15 +2,16 @@
 import { noteService } from "../services/note.service.js"
 const { useState } = React
 
-export function AddList({onSetNotes}) {
+export function AddList({ onSetNotes }) {
     const [title, setTitle] = useState('')
     const [todos, setTodos] = useState('')
 
     function OnSaveTodosNote() {
         const note = noteService.createTodosNote(title, todos)
         noteService.save(note).then((newNote) => {
-            onSetNotes(newNote)})
-        
+            onSetNotes(newNote)
+        })
+
     }
 
     function handleTitleChange({ target }) {
@@ -22,11 +23,13 @@ export function AddList({onSetNotes}) {
     }
 
     return (
-        <div className="add-todo">
-            <input type="text" value={title} placeholder="Note title.." onChange={handleTitleChange} />
-            <input type="text" name="todo-input" value={todos}
-                onChange={handleTodosChange}
-                placeholder="Enter comma separated list.." />
+        <div className="add-note flex">
+            <div className="double-input flex column">
+                <input className="add-input" type="text" value={title} placeholder="Note title.." onChange={handleTitleChange} />
+                <input className="add-input" type="text" name="todo-input" value={todos}
+                    onChange={handleTodosChange}
+                    placeholder="Enter comma separated list.." />
+            </div>
             <button onClick={OnSaveTodosNote}>Save</button>
         </div>
     )

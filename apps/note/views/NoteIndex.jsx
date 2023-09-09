@@ -9,10 +9,7 @@ const { Link } = ReactRouterDOM
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
-    // const [pinnedNotes, setPinnedNotes] = useState(null)
-    // const [unpinnedNotes, setUnpinnedNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-
 
     useEffect(() => {
         noteService.query(filterBy).then(notes => {
@@ -73,13 +70,41 @@ export function NoteIndex() {
         else return 1
     }
 
+    function onChangeColor(ev, note) {
+        console.log('new color:', ev.target.value)
+        note.style.backgroundColor = ev.target.value
+        noteService.save(note).then((note) => {
+            setNotes(prevNotes => {
+                const newNotes = [...prevNotes]
+                const idx = prevNotes.findIndex((prevNote => prevNote.id === note.id))
+                newNotes[idx].style.backgroundColor = ev.target.value
+                newNotes.sort(compareFunc)
+                return newNotes
+            })
+        })
+    }
+
+    function onDuplicateNote(note) {
+        const newNote = {...note}
+        newNote.id = ''
+        noteService.save(newNote)
+        .then((dupNote) => {
+             setNotes(prevNotes => {
+                const newNotes = [...prevNotes]
+                newNotes.push(dupNote)
+                return newNotes
+             })
+        })
+    }
+
+
     if (!notes) return <div>Loading...</div>
 
     return (
         <section className='note-index'>
             <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
             <NoteAddBar onSetNotes={onSetNotes} />
-            <NoteList notes={notes} onRemoveNote={onRemoveNote} onTogglePin={onTogglePin} />
+            <NoteList notes={notes} onRemoveNote={onRemoveNote} onTogglePin={onTogglePin} onChangeColor={onChangeColor} onDuplicateNote={onDuplicateNote} />
         </section>
     )
 }

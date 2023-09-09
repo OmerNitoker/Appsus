@@ -20,8 +20,8 @@ export function AddVideo() {
     }
 
     return (
-        <div className="add-video">
-            <input type="text" placeholder="Enter video url.." onChange={handleVidChange} />
+        <div className="add-note flex">
+            <input className="add-input" type="text" placeholder="Enter video url.." onChange={handleVidChange} />
             <button onClick={OnSaveVidNote}>Save</button>
         </div>
     )

@@ -23,7 +23,7 @@ export function AddImg({ onSetNotes }) {
 
     return (
         <section className="add-note flex">
-            <div className="img-inputs flex column">
+            <div className="double-input flex column">
             <input className="add-input" type="text" placeholder="Enter image url.." onChange={handleImgChange} />
             <input className="add-input" type="text" value={title} placeholder="Image title.." onChange={handleTitleChange} />
             </div>

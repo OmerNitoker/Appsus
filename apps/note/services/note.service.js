@@ -15,7 +15,11 @@ export const noteService = {
     createTxtNote,
     createImgNote,
     createVideoNote,
-    createTodosNote
+    createTodosNote,
+    updateTxtNote,
+    updateImgNote,
+    updateVideoNote,
+    updateTodosNote
 }
 
 const NOTES_KEY = 'notesDB'
@@ -196,9 +200,41 @@ function createTodosNote(title, txt) {
         createdAt: Date.now(),
         type: 'NoteTodos',
         isPinned: false,
-        info: { title , todos},
+        info: { title, todos },
         style: { backgroundColor: '#8E9ADA' }
     }
 
     return newNote
 }
+
+function updateTxtNote(note, newTxt) {
+    note.info.txt = newTxt
+    return note
+}
+
+function updateImgNote(note, newURL, newTitle) {
+    note.info.url = newURL
+    note.info.title = newTitle
+    return note
+}
+
+function updateVideoNote(note, newURL) {
+    note.info.url = newURL
+    return note
+}
+
+function updateTodosNote(note, newTitle, newTodos) {
+    const list = newTodos.split(',')
+    const todos = []
+    list.forEach(todo => {
+        todos.push({
+            todoId: storageService.makeId(),
+            txt: todo,
+            doneAt: null
+        })
+        note.info.title = newTitle
+        note.info.todos = todos
+    })
+    return note
+}
+

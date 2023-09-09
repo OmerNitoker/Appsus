@@ -10,7 +10,6 @@ import {AddAudio} from '../views/AddAudio.jsx'
 const { useState } = React
 
 export function NoteAddBar({onSetNotes}) {
-
     const [noteType, setNoteType] = useState('txt')
 
 
@@ -23,13 +22,8 @@ export function NoteAddBar({onSetNotes}) {
             {noteType === 'todo' && <AddList onSetNotes={onSetNotes}/>}
             {noteType === 'audio' && <AddAudio />}
             </div>
-            <Icons setNoteType={setNoteType} />
+            <Icons setNoteType={setNoteType} noteType = {noteType} />
         </section>
-
-        /* {isPlusOn && <AddTypeMenu />}
-        <span className="material-symbols-outlined" onClick={() => setIsPlusOn(!isPlusOn)}>
-            add_circle
-        </span> */
 
     )
 }

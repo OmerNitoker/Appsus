@@ -6,13 +6,9 @@
     width: 80%;
     margin: 0 auto;
     padding: 1em;
-    background-color: lightgrey;
+    border-radius: 10px;
+    background-color: rgb(225, 217, 217);
 }
-
-/* .type-to-add {
-    gap: 1em;
-    flex-grow: 1;
-} */
 
 .add-note {
     gap: 1em;
@@ -38,7 +34,7 @@ button {
     flex-grow: 1;
 }
 
-.img-inputs {
+.double-input {
     gap: .5em;
     flex-grow: 2;
 }
