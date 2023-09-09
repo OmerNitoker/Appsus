@@ -83,6 +83,7 @@ export function NoteIndex() {
 
     function onChangeColor(ev, note) {
         console.log('new color:', ev.target.value)
+        console.log('note:' , note)
         note.style.backgroundColor = ev.target.value
         noteService.save(note).then((note) => {
             setNotes(prevNotes => {
