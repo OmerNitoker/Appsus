@@ -3,6 +3,13 @@
 
 /* LARGE */
 @media (min-width: 920px) {
+    .home {
+        background-image: url('https://img.freepik.com/premium-photo/flat-lay-modern-workspace-with-computer-laptop-coffee-cup-book-black-table_35674-14741.jpg');
+        background-size: cover; /* Adjust the size to cover the container */
+        background-position: center; 
+        color: white;
+    }
+
     .mail-nav {
         background-color: rgb(246, 246, 246);
 

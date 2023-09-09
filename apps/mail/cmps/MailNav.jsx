@@ -34,12 +34,12 @@ export function MailNav({ onSetMailsToShow, unReadMails }) {
                     </span>
                     <h1 >Sent</h1>
                 </div>
-                <div onClick={() => onShowMails('drafts')}>
+                {/* <div onClick={() => onShowMails('drafts')}>
                     <span className="material-symbols-outlined">
                         draft
                     </span>
                     <h1>Drafts</h1>
-                </div>
+                </div> */}
                 <div onClick={() => onShowMails('trash')}>
                     <span className="material-symbols-outlined">
                         delete
