@@ -11,7 +11,11 @@ export const noteService = {
     getFilterBy,
     setFilterBy,
     getDefaultFilter,
-    togglePin
+    togglePin,
+    createTxtNote,
+    createImgNote,
+    createVideoNote,
+    createTodosNote
 }
 
 const NOTES_KEY = 'notesDB'
@@ -75,15 +79,15 @@ function _createNotes() {
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: false,
-                style: { backgroundColor: '#00d' },
+                style: { backgroundColor: '#8E9ADA' },
                 info: { txt: 'Fullstack Me Baby!' }
             },
             {
                 id: 'n102',
                 type: 'NoteImg',
                 isPinned: false,
-                info: { url: "http://animal.discovery.com/mammals/cheetah/pictures/cheetah-picture.jpg", title: 'Bobi and Me' },
-                style: { backgroundColor: '#00d' }
+                info: { url: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350", title: 'Mitsi' },
+                style: { backgroundColor: '#8E9ADA' }
             },
             {
                 id: 'n103',
@@ -92,10 +96,11 @@ function _createNotes() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
+                        { todoId: 'ksgf58', txt: 'Driving license', doneAt: null },
+                        { todoId: 'akue99', txt: 'Coding power', doneAt: 187111111 }
                     ]
-                }
+                },
+                style: { backgroundColor: '#8E9ADA' }
             }
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
@@ -132,7 +137,68 @@ function togglePin(noteId) {
     get(noteId)
         .then((note) => {
             note.isPinned = !note.isPinned
-            console.log('note:', note)
             save(note)
         })
+}
+
+function createTxtNote(txt) {
+
+    const newNote = {
+        createdAt: Date.now(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: { backgroundColor: '#8E9ADA' },
+        info: { txt }
+    }
+
+    // save(newNote)
+    return newNote
+
+
+
+}
+
+function createImgNote(title, url) {
+    const newNote = {
+        createdAt: Date.now(),
+        type: 'NoteImg',
+        isPinned: false,
+        info: { url, title },
+        style: { backgroundColor: '#8E9ADA' }
+    }
+
+    return newNote
+}
+
+function createVideoNote(url) {
+    const newNote = {
+        createdAt: Date.now(),
+        type: 'NoteVideo',
+        isPinned: false,
+        info: { url },
+        style: { backgroundColor: '#8E9ADA' }
+    }
+
+    return newNote
+}
+
+function createTodosNote(title, txt) {
+    const list = txt.split(',')
+    const todos = []
+    list.forEach(todo => {
+        todos.push({
+            todoId: storageService.makeId(),
+            txt: todo,
+            doneAt: null
+        })
+    })
+    const newNote = {
+        createdAt: Date.now(),
+        type: 'NoteTodos',
+        isPinned: false,
+        info: { title , todos},
+        style: { backgroundColor: '#8E9ADA' }
+    }
+
+    return newNote
 }

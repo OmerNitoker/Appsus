@@ -1,0 +1,44 @@
+
+.add-bar {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: lightgrey;
+}
+
+/* .type-to-add {
+    gap: 1em;
+    flex-grow: 1;
+} */
+
+.add-note {
+    gap: 1em;
+}
+
+.add-note .add-input {
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+button {
+    width: max-content;
+    height: max-content;
+    align-self: center;
+    padding: 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    /* border: none; */
+}
+
+.type-to-add {
+    flex-grow: 1;
+}
+
+.img-inputs {
+    gap: .5em;
+    flex-grow: 1;
+}

@@ -38,7 +38,7 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
     return (
         <section>
             <form className="note-filter flex justify-center" onSubmit={onSubmitFilter}>
-                <select name="type" id="type-select" onChange={handleChange}>
+                <select className="type-select" name="type" id="type-select" onChange={handleChange}>
                     <option value="">Filter by note type...</option>
                     <option value="NoteTxt">Text</option>
                     <option value="NoteImg">Image</option>
@@ -46,11 +46,11 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
                     <option value="NoteTodos">List</option>
                 </select>
 
-                <input value={txt} onChange={handleChange} type='text' placeholder='Search note' id='txt' name='txt' />
-                <div>
+                <input type='text' className="search-note" value={txt} onChange={handleChange} placeholder='Search note' id='txt' name='txt' />
+                {/* <div>
                 <label htmlFor="pin">Pinned</label>
                 <input type="checkbox" id="pin" name="isPinned" value="pin" onChange={handleChange} />
-                </div>
+                </div> */}
             </form>
         </section>
     )

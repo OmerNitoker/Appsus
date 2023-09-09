@@ -1,25 +1,25 @@
 import { NotePreview } from "./NotePreview.jsx"
-const { Link } = ReactRouterDOM
 const { useState } = React
 
 
 export function NoteList({ notes, onRemoveNote, onTogglePin }) {
 
-    // const [pinned, setPinned] = useState([])
+    const [showColorPicker, setShowColorPicker] = useState(false)
+
 
     // const pinnedNotes = notes.filter(note => note.isPinned);
     // const unpinnedNotes = notes.filter(note => !note.isPinned)
     // console.log('pinned:', pinnedNotes)
     // console.log('unpinned:', unpinnedNotes)
-    console.log('note1:', notes)
-
+    console.log('notes before render:' , notes)
     return (
-        <ul className='list-notes'>
+        <ul className='notes-container'>
             {notes.map(note => (
-                <li key={note.id}>
+                <li className="note" style={{backgroundColor: note.style.backgroundColor}} key={note.id}>
                     <NotePreview note={note} />
                     <section>
-                        <span className="material-symbols-outlined">
+                       {showColorPicker && <input type="color" name="color-picker" onChange={(event)} />}
+                        <span className="material-symbols-outlined" onClick={() => setShowColorPicker(showColorPicker => !showColorPicker)} >
                             palette
                         </span>
                         <span className="material-symbols-outlined" onClick={() => onTogglePin(note.id)}>

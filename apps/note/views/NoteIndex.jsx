@@ -33,38 +33,53 @@ export function NoteIndex() {
             })
     }
 
+    // function onChangeBcgColor(noteId) {
+    //     console.log('note:', noteId)
+    // }
+
     function onSetFilterBy(filterBy) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
 
     function onTogglePin(noteId) {
         noteService.togglePin(noteId)
-        setNotes()
-        // setNotes(prevNotes => { [...prevNotes]
-        //     const idx = prevNotes.findIndex((note => note.id === noteId))
-        //     prevNotes[idx].isPinned = !prevNotes[idx].isPinned
-        //     prevNotes.sort(compareFunc)
-        // } )
-        // console.log('notes22', notes)
+        setNotes(prevNotes => {
+            const newNotes = [...prevNotes]
+            const idx = prevNotes.findIndex((note => note.id === noteId))
+            newNotes[idx].isPinned = !newNotes[idx].isPinned
+            newNotes.sort(compareFunc)
+            return newNotes
+        })
+    }
+
+    function onSetNotes(note) {
+        // noteService.query(filterBy).then(notes => {
+        //     notes.sort(compareFunc)
+        //     console.log('onSetNotes:', notes)
+        setNotes(prevNotes => {
+            const newNotes = [...prevNotes]
+            newNotes.push(note)
+            newNotes.sort(compareFunc)
+            return newNotes
+        })
+
     }
 
     function compareFunc(note1, note2) {
         if (note1.isPinned && !note2.isPinned) {
-            console.log('-1')
             return -1
-        } 
+        }
         else if (!note1.isPinned && note2.isPinned) return 1
         else return 1
     }
 
-    console.log('notes before rendering:', notes)
     if (!notes) return <div>Loading...</div>
 
     return (
         <section className='note-index'>
             <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+            <NoteAddBar onSetNotes={onSetNotes} />
             <NoteList notes={notes} onRemoveNote={onRemoveNote} onTogglePin={onTogglePin} />
-            <NoteAddBar />
         </section>
     )
 }

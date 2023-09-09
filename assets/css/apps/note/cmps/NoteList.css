@@ -1,17 +1,21 @@
- .list-notes {
+ .notes-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
+    column-gap: 10px;
     padding: 15px 0 0;
+    margin: 0 1em;
  }
 
- .list-notes li {
+ .notes-container .note {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: lightcoral;
-    width: max-content;
+    text-align: center;
+    height: max-content;
+    /* width: max-content; */
     padding: 1em;
     padding-block-end: .2em;
     border: solid 1px black;

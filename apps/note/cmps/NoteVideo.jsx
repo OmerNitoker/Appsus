@@ -1,6 +1,6 @@
 
-export function NoteVideo() {
+export function NoteVideo({note}) {
     return (
-        <div>NoteVideo</div>
+        <video controls muted src={note.info.url} />
     )
 }
