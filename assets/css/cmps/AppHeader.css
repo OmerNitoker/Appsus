@@ -11,7 +11,9 @@ header {
 }
 
 .app-header h3 {
-    margin-inline-start: 2em ;
+    margin-inline-start: 2em;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .menu-header-btn {
@@ -25,6 +27,8 @@ header {
     background-color: white;
     border-radius: 1em;
     padding: 0.5em;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
 }
 
 nav a {
