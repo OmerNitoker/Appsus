@@ -5,7 +5,9 @@ export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDu
 
 
     console.log('notes before render:', notes)
-    console.log(typeof(notes[0].style.backgroundColor))
+    console.log(typeof (notes[0].style.backgroundColor))
+
+    
 
 
     return (
@@ -43,5 +45,6 @@ export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDu
                 </li>
             ))}
         </ul>
+
     )
 }
