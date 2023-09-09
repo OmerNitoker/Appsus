@@ -7,7 +7,8 @@ export function MailPreview({ mail, onStar }) {
     //    return `${month} ${day}`
     // }
     function handleClickEvent(ev) {
-        ev.stopPropagation()
+        ev.preventDefault()
+        console.log(ev)
         onStar(mail.id)
     }
 

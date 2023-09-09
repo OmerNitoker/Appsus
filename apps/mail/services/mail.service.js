@@ -18,7 +18,7 @@ export const mailService = {
 function star(mailId) {
     return get(mailId)
         .then(mail => {
-            mail.isStarred = true
+            mail.isStarred = !mail.isStarred
             save(mail)
             console.log(mail)
         })
@@ -48,7 +48,7 @@ function getEmptyMail() {
         subject: '',
         body: '',
         isRead: true,
-        sentAt: 1551133930594,
+        sentAt: null,
         removedAt: null,
         from: getUser().email,
         to: '',
@@ -84,7 +84,9 @@ function query(mailsToShow) {
             } else if (mailsToShow.folder === 'inbox') {
                 mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
             } else if (mailsToShow.folder === 'sent') {
-                mails = mails.filter(mail => mail.from === userMail && !mail.removedAt)
+                mails = mails.filter(mail => mail.from === userMail && !mail.removedAt && mail.sentAt)
+            }else if (mailsToShow.folder==='drafts'){
+                mails= mails.filter(mail=>!mail.sentAt && !mail.removedAt)
             }
             if (mailsToShow.txt) {
                 const regExp = new RegExp(mailsToShow.txt, 'i')
@@ -93,9 +95,14 @@ function query(mailsToShow) {
             if (mailsToShow.isUnread) {
                 mails = mails.filter(mail => !mail.isRead)
             }
-            // else if (!mailsToShow.isRead) {
-            //     // console.log('hi')
-            //     mails = mails.filter(mail => !mail.isRead)
+            if (mailsToShow.from){
+                const regExp = new RegExp(mailsToShow.from, 'i')
+                mails = mails.filter(mail => regExp.test(mail.from))
+            }
+            
+            // if (mailsToShow.date) {
+            //     console.log(Date.parse(date))
+            //     mails = mails.filter(mail => Date.parse(date) === mail.sentAt)
             // }
 
             if (mailsToShow.sortBy === 'date' || !mailsToShow.sortBy) {
@@ -195,10 +202,8 @@ Thank you for shopping with us. Your order 3025323788890605 is confirmed. We'll 
         {
             id: 'e106',
             subject: 'See why travelers are loving Mauritius, Africa',
-            body: `
-           
-Find the best of the best in Mauritius, Africa
-Travelers agree: Mauritius, Africa has the best of everything—from first-rate restaurants to five-bubble stays. And thanks to all the rave reviews, it's also one of this year's Travelers' Choice Best of the Best Trending Destinations.`,
+            body: `Find the best of the best in Mauritius, Africa
+            Travelers agree: Mauritius, Africa has the best of everything—from first-rate restaurants to five-bubble stays. And thanks to all the rave reviews, it's also one of this year's Travelers' Choice Best of the Best Trending Destinations.`,
             isRead: false,
             sentAt: 1667899180000,
             removedAt: null,

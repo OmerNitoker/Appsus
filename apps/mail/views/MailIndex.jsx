@@ -8,7 +8,7 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [mailsToShow, setMailsToShow] = useState({ folder: 'inbox' })
     const [isUnread, setIsUnread] = useState(false)
-    const [unReadMails,setUnreadMails]=useState(0)
+    const [unReadMails, setUnreadMails] = useState(0)
 
 
     // function getUnReadMails() {
@@ -28,11 +28,11 @@ export function MailIndex() {
 
     useEffect(() => {
         mailService.query(mailsToShow)
-        .then(mails=>{
-            const unReadMails = mails.filter(mail => mail.isRead === false)
+            .then(mails => {
+                const unReadMails = mails.filter(mail => mail.isRead === false)
                 setUnreadMails(unReadMails.length)
-        })
-            }, [])
+            })
+    }, [])
 
     function onSetMailsToShow(field, fiterBy) {
         if (field === 'isUnread') setIsUnread(!isUnread)
@@ -47,6 +47,7 @@ export function MailIndex() {
     function onStar(mailId) {
         console.log('hi')
         mailService.star(mailId)
+        // .then(setMails(...mails))
         // mailService.get(mailId)
         // .then(res => console.log(res))
 
@@ -58,12 +59,16 @@ export function MailIndex() {
         <div className="mail-index">
 
             <MailNav onSetMailsToShow={onSetMailsToShow} unReadMails={unReadMails} />
-            <button onClick={() => onSetMailsToShow('isUnread', !isUnread)} className={'is-unread ' + active}>Is unread</button>
+            
             <select className="sort" name="sortBy" id="date" onChange={handleChange}>
                 <option value="">Sort by</option>
                 <option value="date">Date</option>
                 <option value="subject">Subject</option>
             </select>
+            {/* <input onChange={handleChange} name="date" type="date"></input> */}
+            <button onClick={() => onSetMailsToShow('isUnread', !isUnread)} className={'is-unread ' + active}>Is unread</button>
+
+            <input onChange={handleChange} name="from" placeholder="From" className="from-filter"></input>
 
             <input onChange={handleChange} name="txt" placeholder="   Search mail" className="search"></input>
 
