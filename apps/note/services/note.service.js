@@ -86,7 +86,7 @@ function _createNotes() {
                 id: 'n102',
                 type: 'NoteImg',
                 isPinned: false,
-                info: { url: "https:images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350", title: 'Mitsi' },
+                info: { url: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350", title: 'Mitsi' },
                 style: { backgroundColor: '#8E9ADA' }
             },
             {
