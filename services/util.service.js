@@ -73,6 +73,7 @@ function getMonthName(date) {
 }
 
 function formatDate(timestamp) {
+    if (!timestamp) return ''
     const date = new Date(timestamp);
 
     const options = {

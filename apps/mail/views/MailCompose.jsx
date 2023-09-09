@@ -1,10 +1,24 @@
 import { mailService } from "../services/mail.service.js";
 const { useNavigate } = ReactRouterDOM
-const { useState } = React
+const { useState, useRef, useEffect } = React
 
 export function MailCompose() {
     const [mailToCompose, setmailToCompose] = useState(mailService.getEmptyMail())
+    // const [mailDraft, setMailDraft] = useState(mailToCompose)
     const navigate = useNavigate()
+    // const timerIntervalRef = useRef()
+
+    // useEffect(() => {
+    //     // When mounted start interval
+    //     // timerIntervalRef.current = setInterval(onSaveMailDraft, 5000)
+    //     // When unmounted clear
+    //     return () => {
+    //         mailService.save(mailDraft)
+    //     //         .then(
+    //     //             clearInterval(timerIntervalRef.current)
+    //     //             )
+    //     }
+    // }, [])
 
     function handleChange({ target }) {
         const field = target.name
@@ -25,10 +39,14 @@ export function MailCompose() {
         }
 
         setmailToCompose(prevMailToCompose => ({ ...prevMailToCompose, [field]: value }))
+        // setMailDraft(prevMailToCompose => ({ ...prevMailToCompose, [field]: value }))
     }
 
-    function onSendMail(ev) {
+    // function onSaveMailDraft() {
+    // //   mailService.save(mailDraft)
+    // }
 
+    function onSendMail(ev) {
         ev.preventDefault()
         mailToCompose.sentAt = Date.now()
         console.log(mailToCompose)

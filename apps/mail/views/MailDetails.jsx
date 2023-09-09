@@ -34,6 +34,10 @@ export function MailDetails() {
 
     }
 
+    function onStar(mailId) {
+        mailService.star(mailId)
+    }
+
     if (!mail) return <div>Loading...</div>
     const isStarred = mail.isStarred ? 'starred' : ' '
     return (
@@ -45,14 +49,14 @@ export function MailDetails() {
                 <span onClick={onRemoveMail} className="material-symbols-outlined">
                     delete
                 </span>
-                <span className={isStarred + ' star material-symbols-outlined'}>
+                <span onClick={()=>onStar(mail.id)} className={isStarred + ' star material-symbols-outlined'}>
                     star
                 </span>
             </div>
             <h2 className="subject">{mail.subject}</h2>
             <h5 className="from">{mail.from}</h5>
             <h5 className="time">{utilService.formatDate(mail.sentAt)}</h5>
-            <h1 className="mail-body">{mail.body}</h1>
+            <h4 className="mail-body">{mail.body}</h4>
         </section>
     )
 }

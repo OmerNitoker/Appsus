@@ -5,10 +5,20 @@
 @media (min-width: 920px) {
     .mail-nav {
         background-color: rgb(246, 246, 246);
+        
     }
+
+    /* .mail-nav-content .close div{
+        background-color: pink;
+    } */
 
     .mail-nav-content {
         position: relative;
+        left: -1em;
+        background-color: rgb(246, 246, 246);
+        box-shadow:none;
+
+
     }
 
     .mail-index :first-child {
@@ -17,30 +27,32 @@
 
     .mail-index .search {
         grid-row: 1;
-        grid-column: 2/4;
+        /* grid-column: 2/4; */
         width: 20em;
     }
-
+.mail-index .from-filter{
+    margin-inline-end: 1em;
+}
     .mail-index .is-unread {
-        grid-row: 2;
+        /* grid-row: 2; */
         margin-inline-end: 1em;
     }
 
     .mail-index .sort {
         margin: 1em;
-        grid-row: 2;
-        justify-self: start;
+        /* grid-row: 2; */
+        justify-self: end;
 
     }
 
     .mail-index {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto min-content min-content min-content ;
         gap: 0;
     }
 
 
     .mail-index .mails {
-        grid-column: 2/-1;
+        grid-column: 2/6;
 
     }
 
@@ -65,8 +77,9 @@
 
     }
 
-    .mail-preview:hover{
-        box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the button */
+    .mail-preview:hover {
+        box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow to the button */
 
     }
 
@@ -95,5 +108,39 @@
     .mail-preview .date {
         grid-column: 5/6;
         grid-row: 1/-1;
+
+    }
+
+    .mail-details .subject {
+        margin: 0 3rem;
+
+    }
+
+    .mail-details .from {
+        margin: 0 3rem 1em 3rem;
+
+    }
+
+    .mail-details .mail-body {
+        margin: 1em 15em 2em 6em;
+        line-height: 1.5em;
+
+    }
+
+    .mail-details .time {
+        margin: 0 3rem;
+    }
+
+    .mail-compose {
+        margin-inline: 3em;
+        /* margin-block-start: 2em; */
+
+    }
+
+    .mail-compose .compose {
+        margin-block-start: 2em;
+        margin-inline: 10em;
+
+
     }
 }

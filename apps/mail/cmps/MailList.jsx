@@ -3,22 +3,22 @@ const { Link } = ReactRouterDOM
 
 export function MailList({ mails, onStar }) {
     return (<div>
+        {!mails.length && <div>No mails to display</div>}
+            <ul className="mail-list">
+                {mails.map(mail =>
+                    <Link className={mail.isRead ? 'read' : ''} key={mail.id} to={`/mail/${mail.id}`}>
+                        <li> <MailPreview mail={mail} onStar={onStar} />
+                        </li>
+                    </Link>)}
+            </ul>
 
-        <ul className="mail-list">
-            {mails.map(mail =>
-                <Link className={mail.isRead ? 'read' : ''} key={mail.id} to={`/mail/${mail.id}`}>
-                    <li> <MailPreview mail={mail} onStar={onStar}/>
-                    </li>
-                </Link>)}
-        </ul>
-       
             <Link to="/mail/compose">
-            <button className="compose">
-                <span className="material-symbols-outlined">edit</span>
-                <span>Compose</span>
+                <button className="compose">
+                    <span className="material-symbols-outlined">edit</span>
+                    <span>Compose</span>
                 </button>
             </Link>
-       
-    </div>
+
+        </div>
     )
 }

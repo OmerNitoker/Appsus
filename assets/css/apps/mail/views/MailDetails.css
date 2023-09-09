@@ -1,7 +1,7 @@
 .mail-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 1em;
+    margin: 1em 2em;
     gap: 1em;
 
 }
@@ -17,21 +17,31 @@
     justify-self: end;
     display: flex;
     gap: 1em;
+    color: rgb(62, 62, 62);
+
 }
 
 .mail-details .subject {
     grid-column: 1/-1;
+    /* padding: 0 2em; */
+
 }
 
 .mail-details .from {
     grid-column: 1;
+    /* padding: 0 2em; */
 }
 
 .mail-details .time {
     justify-self: end;
+    font-weight: lighter;
+
 }
 
 .mail-details .mail-body {
     margin-block-start: 1em;
     grid-column: 1/-1;
+    font-weight: lighter;
+    line-height: 1.3em;
+    /* padding: 0 2em; */
 }

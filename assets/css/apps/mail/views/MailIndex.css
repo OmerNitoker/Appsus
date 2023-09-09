@@ -1,12 +1,23 @@
  /* mail index  */
  .mail-index {
      display: grid;
-     grid-template-columns: 1fr auto auto auto;
+     grid-template-columns: 1fr auto auto auto auto;
      gap: 1em;
 
  }
 
- .mail-index .is-unread{
+ .mail-index .is-unread {
+     height: 2.5em;
+     width: 6em;
+     justify-self: end;
+     align-self: center;
+     background-color: white;
+     border: 1px solid rgb(63, 63, 63);
+     color: rgb(63, 63, 63);
+     border-radius: 10px;
+     cursor: pointer;
+ }
+.mail-index .from-filter{
     height: 2.5em;
     width: 6em;
     justify-self: end;
@@ -16,35 +27,39 @@
     color: rgb(63, 63, 63);
     border-radius: 10px;
     cursor: pointer;
- }
- .mail-index .is-unread:hover{
-    background-color: rgb(241, 241, 241);
- }
- .mail-index .active{
-    background-color: lightblue;
-    border: none;
- }
- .mail-index .active:hover{
-    background-color: rgb(153, 206, 224);
- }
-.mail-index .sort{
-    height: 2.5em;
-    width: 6em;
-    justify-self: end;
-    align-self: center;
-    background-color: white;
-    border: 1px solid rgb(63, 63, 63);
-    color: rgb(63, 63, 63);
-    border-radius: 10px;
-    cursor: pointer;  
 }
+ .mail-index .is-unread:hover {
+     background-color: rgb(241, 241, 241);
+ }
 
-.mail-index .sort:hover{
-    background-color: rgb(241, 241, 241);
+ .mail-index .active {
+     background-color: lightblue;
+     border: none;
+ }
 
-}
+ .mail-index .active:hover {
+     background-color: rgb(153, 206, 224);
+ }
+
+ .mail-index .sort {
+     height: 2.5em;
+     width: 6em;
+     justify-self: end;
+     align-self: center;
+     background-color: white;
+     border: 1px solid rgb(63, 63, 63);
+     color: rgb(63, 63, 63);
+     border-radius: 10px;
+     cursor: pointer;
+ }
+
+ .mail-index .sort:hover {
+     background-color: rgb(241, 241, 241);
+
+ }
+
  .mail-index .search {
-     grid-column: 4/5;
+     grid-column: 5/6;
      place-self: center;
      margin-inline-end: 1em;
      height: 2.5em;
@@ -52,10 +67,8 @@
      /* border: 1px solid rgb(63, 63, 63); */
      border: none;
      background-color: rgb(235, 242, 246);
-     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the button */
-
-
-
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+     /* Add shadow to the button */
  }
 
  .mail-index .mails {
@@ -65,7 +78,7 @@
 
 
  .mail-index .mails .compose {
-    display: flex;
+     display: flex;
      width: 9em;
      height: 3.3em;
      position: fixed;
@@ -78,8 +91,9 @@
      padding: 1em;
      cursor: pointer;
      color: rgb(226, 72, 72);
-     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the button */
-
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
  }
 
- 
+ .mail-index .mails .compose:hover {
+    background-color: rgb(223, 222, 222);
+ }
