@@ -4,7 +4,6 @@
      /* background-image: url('https://img.freepik.com/premium-photo/flat-lay-modern-workspace-with-computer-laptop-coffee-cup-book-black-table_35674-14741.jpg'); */
      /* background-size: cover; /* Adjust the size to cover the container */
      /* background-position: center;   */
-     /* color: white; */
      display: grid;
      height: 100vh;
      place-items: center;
