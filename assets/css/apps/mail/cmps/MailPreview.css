@@ -1,7 +1,7 @@
 .mail-preview{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr min-content;
+    grid-template-columns: 1fr min-content min-content;
     gap:.5em;
     margin-block-end: 1.5em;
 
@@ -22,7 +22,7 @@
 
 .mail-preview .date{
     justify-self: end;
-    /* grid-column: 2/3; */
+    grid-column: 2/4;
 
 }
 .mail-preview .starred.star{
@@ -41,8 +41,15 @@
     font-size: 1em;
 }
 
+.mail-preview .read-unread{
+    color: rgb(204, 204, 204);
+    justify-self: end;
+    grid-row: 3/4;
+    font-size: 1em;
+}
 
 .mail-preview .subject{
+    grid-row: 2/3;
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Prevent text from wrapping to the next line */
     text-overflow: ellipsis; /* Display an ellipsis (...) when text overflows */
