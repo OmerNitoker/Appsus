@@ -12,7 +12,8 @@ export const mailService = {
     save,
     remove,
     getUnreadCount,
-    star
+    star,
+    setIsRead
 }
 
 function star(mailId) {
@@ -20,9 +21,19 @@ function star(mailId) {
         .then(mail => {
             mail.isStarred = !mail.isStarred
             save(mail)
-            console.log(mail)
+            // console.log(mail)
+            return mail
         })
 
+}
+
+function setIsRead(mailId){
+    return get(mailId)
+    .then(mail => {
+        mail.isRead= !mail.isRead
+        save(mail)
+        return mail
+    })
 }
 function getUnreadCount() {
     return mailService.query('inbox')
@@ -64,6 +75,7 @@ function getUser() {
 }
 
 function save(mail) {
+    // console.log(mail)
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
@@ -85,21 +97,21 @@ function query(mailsToShow) {
                 mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
             } else if (mailsToShow.folder === 'sent') {
                 mails = mails.filter(mail => mail.from === userMail && !mail.removedAt && mail.sentAt)
-            }else if (mailsToShow.folder==='drafts'){
-                mails= mails.filter(mail=>!mail.sentAt && !mail.removedAt)
+            } else if (mailsToShow.folder === 'drafts') {
+                mails = mails.filter(mail => !mail.sentAt && !mail.removedAt)
             }
             if (mailsToShow.txt) {
                 const regExp = new RegExp(mailsToShow.txt, 'i')
-                mails = mails.filter(mail => regExp.test(mail.subject))
+                mails = mails.filter(mail => regExp.test(mail[mailsToShow.searchBy]))
             }
             if (mailsToShow.isUnread) {
                 mails = mails.filter(mail => !mail.isRead)
             }
-            if (mailsToShow.from){
-                const regExp = new RegExp(mailsToShow.from, 'i')
-                mails = mails.filter(mail => regExp.test(mail.from))
-            }
-            
+            // if (mailsToShow.from){
+            //     const regExp = new RegExp(mailsToShow.from, 'i')
+            //     mails = mails.filter(mail => regExp.test(mail.from))
+            // }
+
             // if (mailsToShow.date) {
             //     console.log(Date.parse(date))
             //     mails = mails.filter(mail => Date.parse(date) === mail.sentAt)

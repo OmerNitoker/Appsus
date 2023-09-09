@@ -7,6 +7,9 @@ const { useParams, useNavigate, Link } = ReactRouterDOM
 
 export function MailDetails() {
     const [mail, setMail] = useState(null)
+    const [isStarred, setIsStarred] = useState(null)
+
+
     const params = useParams()
     const navigate = useNavigate()
 
@@ -16,7 +19,12 @@ export function MailDetails() {
 
     function loadMail() {
         mailService.get(params.mailId)
-            .then(setMail)
+            .then(mail => {
+                setMail(mail)
+                setIsStarred(mail.isStarred)
+            })
+            // .then(res=>console.log(res))
+            // .then(setIsStarred(mail.isStarred))
             .catch(err => {
                 console.log('err:', err)
                 navigate('/mail')
@@ -30,6 +38,7 @@ export function MailDetails() {
     }
 
     function onRemoveMail() {
+        console.log(mail)
         mailService.remove(params.mailId)
             .then(onBack)
 
@@ -37,17 +46,21 @@ export function MailDetails() {
 
     function onStar(mailId) {
         mailService.star(mailId)
+            .then(res => {
+                console.log(res)
+                setIsStarred(!isStarred)
+            })
+
     }
 
     function onSaveMailToNotes() {
-        const txt = `${mail.subject}
-          ${mail.body}`
+        const txt = mail.subject + '\n' + mail.body
         const note = noteService.createTxtNote(txt)
         noteService.save(note)
     }
 
     if (!mail) return <div>Loading...</div>
-    const isStarred = mail.isStarred ? 'starred' : ' '
+    const star = isStarred ? 'starred' : ' '
     return (
         <section className="mail-details">
             <span onClick={onBack} className="material-symbols-outlined">
@@ -55,12 +68,12 @@ export function MailDetails() {
             </span>
             <div className="options">
                 <span onClick={onSaveMailToNotes} className="material-symbols-outlined" title="Save to notes">
-                    note
+                    description
                 </span>
                 <span onClick={onRemoveMail} className="material-symbols-outlined" title="Delete mail">
                     delete
                 </span>
-                <span onClick={() => onStar(mail.id)} className={isStarred + ' star material-symbols-outlined'} title="Star / Unstar">
+                <span onClick={() => onStar(mail.id)} className={star + ' star material-symbols-outlined'} title="Star / Unstar">
                     star
                 </span>
             </div>

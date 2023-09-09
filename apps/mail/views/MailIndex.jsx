@@ -6,9 +6,11 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
-    const [mailsToShow, setMailsToShow] = useState({ folder: 'inbox' })
+    const [mailsToShow, setMailsToShow] = useState({ folder: 'inbox', searchBy: 'subject' })
     const [isUnread, setIsUnread] = useState(false)
     const [unReadMails, setUnreadMails] = useState(0)
+
+    // const [mail, setMail] = useState(null)
 
 
     // function getUnReadMails() {
@@ -46,11 +48,18 @@ export function MailIndex() {
     // onStar('e101')
     function onStar(mailId) {
         console.log('hi')
-        mailService.star(mailId)
-        // .then(setMails(...mails))
-        // mailService.get(mailId)
-        // .then(res => console.log(res))
+        return mailService.star(mailId)
+            // .then(setMail)
 
+        // .then(mail=>setMails(prevMails=>[...prevMails]))
+
+        // const newMailsToShow = {...mailsToShow}
+        // setMailsToShow(newMailsToShow)
+
+    }
+
+    function onSetRead(mailId) {
+        return mailService.setIsRead(mailId)
     }
 
     if (!mails) return <div>Loading...</div>
@@ -59,7 +68,7 @@ export function MailIndex() {
         <div className="mail-index">
 
             <MailNav onSetMailsToShow={onSetMailsToShow} unReadMails={unReadMails} />
-            
+
             <select className="sort" name="sortBy" id="date" onChange={handleChange}>
                 <option value="">Sort by</option>
                 <option value="date">Date</option>
@@ -68,13 +77,22 @@ export function MailIndex() {
             {/* <input onChange={handleChange} name="date" type="date"></input> */}
             <button onClick={() => onSetMailsToShow('isUnread', !isUnread)} className={'is-unread ' + active}>Is unread</button>
 
-            <input onChange={handleChange} name="from" placeholder="From" className="from-filter"></input>
+
+            {/* <input onChange={handleChange} name="from" placeholder="From" className="from-filter"></input> */}
 
             <input onChange={handleChange} name="txt" placeholder="   Search mail" className="search"></input>
+            <select onChange={handleChange} name="searchBy" className="search-by">
+                <option value="">Search by</option>
+                <option value="subject">Subject</option>
+                <option value="from">From</option>
+                <option value="body">Mail body</option>
+
+            </select>
+
 
 
             <section className="mails">
-                <MailList mails={mails} onStar={onStar}></MailList>
+                <MailList mails={mails} onStar={onStar} onSetRead={onSetRead}></MailList>
             </section>
         </div>
     )

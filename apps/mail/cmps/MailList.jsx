@@ -1,13 +1,13 @@
 import { MailPreview } from "./MailPreview.jsx"
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onStar }) {
+export function MailList({ mails, onStar, onSetRead }) {
     return (<div>
         {!mails.length && <div>No mails to display</div>}
             <ul className="mail-list">
                 {mails.map(mail =>
-                    <Link className={mail.isRead ? 'read' : ''} key={mail.id} to={`/mail/${mail.id}`}>
-                        <li> <MailPreview mail={mail} onStar={onStar} />
+                    <Link key={mail.id} to={`/mail/${mail.id}`}>
+                        <li> <MailPreview mail={mail} onStar={onStar} onSetRead={onSetRead} />
                         </li>
                     </Link>)}
             </ul>

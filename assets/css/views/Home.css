@@ -1,1 +1,80 @@
  /* home */
+
+ .home {
+     display: grid;
+     height: 70vh;
+     place-items: center;
+
+ }
+
+ /* Define the keyframes for the animation */
+ @keyframes colorChange {
+     0% {
+         color: #ff5733;
+         /* Start with one text color */
+     }
+
+     50% {
+         color: #33ff57;
+         /* Change to a different text color at 50% of the animation */
+     }
+
+     100% {
+         color: #ff5733;
+         /* Return to the original text color */
+     }
+ }
+
+ /* Apply the animation to the h2 element */
+ .home h2 {
+     margin-block-start: 2em;
+     animation: colorChange 3s ease-in-out infinite;
+     /* Animation name, duration, timing function, and iteration count */
+ }
+
+ .home .app-benefits {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: .7em;
+ }
+
+ .home .link {
+     display: flex;
+     flex-direction: column;
+     place-items: center;
+     gap: .5em;
+
+ }
+
+ .home .icons {
+     margin-block-start: 3em;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     place-items: center;
+     gap: 1.5em;
+ }
+
+ .home .icons .material-symbols-outlined {
+     /* grid-row: 1; */
+     /* width: 5em; */
+     /* margin-inline: 1em; */
+     font-size: 40px;
+     /* font-variation-settings:
+     'FILL' 0,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 30 */
+     transition: 2s;
+ }
+
+ .home .icons .material-symbols-outlined:hover{
+    position: relative;
+    bottom: .15em;
+     font-variation-settings:
+     'FILL' 0,
+     'wght' 700,
+     'GRAD' 0,
+     'opsz' 30
+ }
