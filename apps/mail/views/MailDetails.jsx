@@ -40,7 +40,8 @@ export function MailDetails() {
     }
 
     function onSaveMailToNotes() {
-        const txt = mail.subject + '\n' + mail.body
+        const txt = `${mail.subject}
+          ${mail.body}`
         const note = noteService.createTxtNote(txt)
         noteService.save(note)
     }
