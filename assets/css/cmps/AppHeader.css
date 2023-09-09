@@ -24,7 +24,7 @@ header {
 
 .menu-container {
     position: absolute;
-    right: 3.5em;
+    right: 3em;
     padding: 1em;
     gap: 1em;
     border: solid 2px black;
@@ -32,6 +32,15 @@ header {
     border-radius: 1em;
     font-family: 'Montserrat', sans-serif;
     /* font-family: 'Roboto', sans-serif; */
+}
+
+.logo-img {
+    height: 3em;
+    width: 3em;
+}
+
+.logo {
+    gap: 1em;
 }
 
 /* nav a {
