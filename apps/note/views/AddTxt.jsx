@@ -1,10 +1,10 @@
 import { noteService } from "../services/note.service.js"
 const { useState } = React
 
+
 export function AddTxt({onSetNotes}) {
 
     const [txt, setTxt] = useState('')
-
 
     function OnSaveTxtNote() {
         const note = noteService.createTxtNote(txt)
@@ -12,6 +12,7 @@ export function AddTxt({onSetNotes}) {
             onSetNotes(newNote)})
         
     }
+
 
     function handleTxtChange({ target }) {
         setTxt(target.value)
@@ -22,7 +23,7 @@ export function AddTxt({onSetNotes}) {
             <input className="add-input" type="text" name="txt-input" value={txt}
                 onChange={handleTxtChange}
                 placeholder="type to add a text note..." />
-            <button className="save-btn" onClick={OnSaveTxtNote}>Save</button>
+            <button className="save-btn" onClick= {OnSaveTxtNote}>Save</button>
         </div>
     )
 }

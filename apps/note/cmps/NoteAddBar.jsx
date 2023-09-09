@@ -7,20 +7,21 @@ import {AddVideo} from '../views/AddVideo.jsx'
 import {AddList} from '../views/AddList.jsx'
 import {AddAudio} from '../views/AddAudio.jsx'
 
+
 const { useState } = React
 
-export function NoteAddBar({onSetNotes}) {
-    const [noteType, setNoteType] = useState('txt')
-
+export function NoteAddBar({onSetNotes , setUpdatedNote}) {
+    const [noteType, setNoteType] = useState('NoteTxt')
+    
 
     return (
         <section className="add-bar flex">
             <div className="type-to-add">
-            {noteType === 'txt' && <AddTxt onSetNotes={onSetNotes}/>}
-            {noteType === 'img' && <AddImg onSetNotes={onSetNotes} />}
-            {noteType === 'video' && <AddVideo />}
-            {noteType === 'todo' && <AddList onSetNotes={onSetNotes}/>}
-            {noteType === 'audio' && <AddAudio />}
+            {noteType === 'NoteTxt' && <AddTxt onSetNotes={onSetNotes} />}
+            {noteType === 'NoteImg' && <AddImg onSetNotes={onSetNotes} />}
+            {noteType === 'NoteVideo' && <AddVideo/>}
+            {noteType === 'NoteTodos' && <AddList onSetNotes={onSetNotes}/>}
+            {noteType === 'NoteAudio' && <AddAudio />}
             </div>
             <Icons setNoteType={setNoteType} noteType = {noteType} />
         </section>

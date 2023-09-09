@@ -4,12 +4,13 @@ import { noteService } from "../services/note.service.js"
 import { NoteAddBar } from "../cmps/NoteAddBar.jsx"
 
 const { useState, useEffect } = React
-const { Link } = ReactRouterDOM
+
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+    
 
     useEffect(() => {
         noteService.query(filterBy).then(notes => {
@@ -62,6 +63,16 @@ export function NoteIndex() {
 
     }
 
+    // function setUpdatedNote(note) {
+    //     setNotes(prevNotes => {
+    //         const newNotes = [...prevNotes]
+    //         const idx = prevNotes.findIndex((prevNote => prevNote.id === note.id))
+    //         newNotes[idx] = note
+    //         return newNotes
+    //     })
+
+    // }
+
     function compareFunc(note1, note2) {
         if (note1.isPinned && !note2.isPinned) {
             return -1
@@ -85,16 +96,16 @@ export function NoteIndex() {
     }
 
     function onDuplicateNote(note) {
-        const newNote = {...note}
+        const newNote = { ...note }
         newNote.id = ''
         noteService.save(newNote)
-        .then((dupNote) => {
-             setNotes(prevNotes => {
-                const newNotes = [...prevNotes]
-                newNotes.push(dupNote)
-                return newNotes
-             })
-        })
+            .then((dupNote) => {
+                setNotes(prevNotes => {
+                    const newNotes = [...prevNotes]
+                    newNotes.push(dupNote)
+                    return newNotes
+                })
+            })
     }
 
 
@@ -103,8 +114,8 @@ export function NoteIndex() {
     return (
         <section className='note-index'>
             <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-            <NoteAddBar onSetNotes={onSetNotes} />
-            <NoteList notes={notes} onRemoveNote={onRemoveNote} onTogglePin={onTogglePin} onChangeColor={onChangeColor} onDuplicateNote={onDuplicateNote} />
+            <NoteAddBar onSetNotes={onSetNotes} /*setUpdatedNote={setUpdatedNote}*/ />
+            <NoteList notes={notes} onRemoveNote={onRemoveNote} onTogglePin={onTogglePin} onChangeColor={onChangeColor} onDuplicateNote={onDuplicateNote}/>
         </section>
     )
 }

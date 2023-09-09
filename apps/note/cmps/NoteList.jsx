@@ -1,10 +1,8 @@
 import { NotePreview } from "./NotePreview.jsx"
-const { useState } = React
 
 
 export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDuplicateNote }) {
 
-    // const [showColorPicker, setShowColorPicker] = useState(false)
 
     console.log('notes before render:', notes)
     return (
@@ -44,28 +42,3 @@ export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDu
         </ul>
     )
 }
-{/* <ul className='unpinned-notes'>
-                {unpinnedNotes.map(note => (
-                    <li key={note.id}>
-                        <NotePreview note={note} />
-                        <section>
-                            <span className="material-symbols-outlined">
-                                palette
-                            </span>
-                            <span className="material-symbols-outlined" onClick={() => onTogglePin(note.id)}>
-                                push_pin
-                            </span>
-                            <span className="material-symbols-outlined">
-                                edit_note
-                            </span>
-                            <span className="material-symbols-outlined" onClick={() => onRemoveNote(note.id)}>
-                                delete
-                            </span>
-                            <span className="material-symbols-outlined">
-                                outgoing_mail
-                            </span>
-                        </section>
-                    </li>
-                ))}
-            </ul>
-        </section> */}
