@@ -100,8 +100,12 @@ function _createNotes() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { todoId: 'ksgf58', txt: 'Driving license', doneAt: null },
-                        { todoId: 'akue99', txt: 'Coding power', doneAt: 187111111 }
+                        { todoId: 'ksgf58', txt: 'Read a book', doneAt: null },
+                        { todoId: 'akue99', txt: 'Plant a tree', doneAt: null },
+                        { todoId: 'dlskjfs', txt: 'Make lemonade', doneAt: null },
+                        { todoId: 'kjmdk', txt: 'Watch movie', doneAt: null },
+                        { todoId: '9dsks', txt: 'Take a walk', doneAt: null },
+
                     ]
                 },
                 style: { backgroundColor: '#8E9ADA' }

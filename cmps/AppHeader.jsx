@@ -9,18 +9,19 @@ export function AppHeader() {
 
     return (
         <header className="app-header">
-            <Link to="/">
-                <h3>Appsus!</h3>
+            <Link className="logo flex align-center" to="/">
+                <h3>Appsus</h3>
+                <img className="logo-img" src="assets/img/horse.png" alt="" />
             </Link>
             <div>
-            <span className="material-symbols-outlined selected-icon menu-header-btn" style={{ cursor: 'pointer' }}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                apps
-            </span>
-            <div className="menu-header">
-                {isMenuOpen && <MenuPreview />}
+                <span className="material-symbols-outlined selected-icon menu-header-btn" style={{ cursor: 'pointer' }}
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    apps
+                </span>
+                <div className="menu-header">
+                    {isMenuOpen && <MenuPreview />}
+                </div>
             </div>
-                    </div>
         </header>
     )
 }
