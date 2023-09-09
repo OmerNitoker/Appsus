@@ -64,7 +64,7 @@ export function MailCompose() {
     return (
         <div className="mail-compose">
             <span onClick={onBack} className="material-symbols-outlined">close</span>
-            <span onClick={onSendMail} className="material-symbols-outlined">
+            <span onClick={onSendMail} className="material-symbols-outlined" title="Send">
                 send
             </span>
             <form className="compose">

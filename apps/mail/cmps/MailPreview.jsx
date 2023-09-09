@@ -25,7 +25,7 @@ export function MailPreview({ mail, onStar }) {
             <h1 className={"from " + mailRead}>{mail.from}</h1>
             <h5 className={mailRead + ' subject'}>{mail.subject}</h5>
             <h5 className="mail-body">{mail.body}</h5>
-            <span onClick={handleClickEvent} className={isStarred + ' star material-symbols-outlined'}>
+            <span onClick={handleClickEvent} className={isStarred + ' star material-symbols-outlined'} title="Star / Unstar">
                 star
             </span>
         </article>

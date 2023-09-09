@@ -1,5 +1,6 @@
 import { mailService } from "../services/mail.service.js";
 import { utilService } from "../../../services/util.service.js";
+import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -38,6 +39,12 @@ export function MailDetails() {
         mailService.star(mailId)
     }
 
+    function onSaveMailToNotes() {
+        const txt = mail.subject + '\n' + mail.body
+        const note = noteService.createTxtNote(txt)
+        noteService.save(note)
+    }
+
     if (!mail) return <div>Loading...</div>
     const isStarred = mail.isStarred ? 'starred' : ' '
     return (
@@ -46,10 +53,13 @@ export function MailDetails() {
                 arrow_back_ios
             </span>
             <div className="options">
-                <span onClick={onRemoveMail} className="material-symbols-outlined">
+                <span onClick={onSaveMailToNotes} className="material-symbols-outlined" title="Save to notes">
+                    note
+                </span>
+                <span onClick={onRemoveMail} className="material-symbols-outlined" title="Delete mail">
                     delete
                 </span>
-                <span onClick={()=>onStar(mail.id)} className={isStarred + ' star material-symbols-outlined'}>
+                <span onClick={() => onStar(mail.id)} className={isStarred + ' star material-symbols-outlined'} title="Star / Unstar">
                     star
                 </span>
             </div>
