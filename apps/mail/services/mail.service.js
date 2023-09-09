@@ -79,6 +79,8 @@ function query(mailsToShow) {
             const userMail = getUser().email
             if (mailsToShow.folder === 'trash') {
                 mails = mails.filter(mail => mail.removedAt)
+            } else if (mailsToShow.folder === 'starred') {
+                mails = mails.filter(mail => mail.isStarred)
             } else if (mailsToShow.folder === 'inbox') {
                 mails = mails.filter(mail => mail.to === userMail && !mail.removedAt)
             } else if (mailsToShow.folder === 'sent') {
@@ -96,8 +98,8 @@ function query(mailsToShow) {
             //     mails = mails.filter(mail => !mail.isRead)
             // }
 
-            if (mailsToShow.sortBy === 'date') {
-                mails = mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt)
+            if (mailsToShow.sortBy === 'date' || !mailsToShow.sortBy) {
+                mails = mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
             } else if (mailsToShow.sortBy === 'subject') {
                 mails = mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
             }
@@ -144,7 +146,7 @@ function _createMails() {
             subject: 'Delivery Update',
             body: 'Order 3025323788890605 has a delivery update. You can view the shipping status below',
             isRead: false,
-            sentAt: 1551133930594,
+            sentAt: 1666715480000,
             removedAt: null,
             from: 'momo@momo.com',
             to: 'user@appsus.com',
@@ -155,12 +157,203 @@ function _createMails() {
             subject: 'Thank you for buying our product',
             body: 'Receipt number 31904, View your order',
             isRead: false,
-            sentAt: 1551133930594,
+            sentAt: 1662457980000,
             removedAt: null,
             from: 'momo@momo.com',
             to: 'user@appsus.com',
             isStarred: false
+        },
+        {
+            id: 'e104',
+            subject: '34142636 is your Facebook account recovery code',
+            body: `We received a request to reset your Facebook password.
+    Enter the following password reset code: 34172636
+    Alternatively, you can directly change your password.
+    Didn't request this change?
+If you didn't request a new password, let us know.`,
+            isRead: false,
+            sentAt: 1631123068000,
+            removedAt: null,
+            from: 'security@facebookmail.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e105',
+            subject: 'Order 3025323788890605: order confirmation',
+            body: `
+            Order confirmation\n
+Hi Muki
+Thank you for shopping with us. Your order 3025323788890605 is confirmed. We'll let you know when your order ships.`,
+            isRead: false,
+            sentAt: 1630940268000,
+            removedAt: null,
+            from: 'notice@aliexpress.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e106',
+            subject: 'See why travelers are loving Mauritius, Africa',
+            body: `
+           
+Find the best of the best in Mauritius, Africa
+Travelers agree: Mauritius, Africa has the best of everything—from first-rate restaurants to five-bubble stays. And thanks to all the rave reviews, it's also one of this year's Travelers' Choice Best of the Best Trending Destinations.`,
+            isRead: false,
+            sentAt: 1667899180000,
+            removedAt: null,
+            from: 'notice@tripadvisor.com',
+            to: 'user@appsus.com',
+            isStarred: true
+        },
+        {
+            id: 'e107',
+            subject: 'Code for signing in to Zoom',
+            body: `
+           
+Hi Muki,
+We detected an unusual sign-in from a device or location you don't usually use. If this was you, enter the code below to sign in to Zoom.
+311389
+The code will expire in 10 minutes.
+Please review the sign in activity details below
+If this wasn't you, please let us know here. We recommend that you update your password and enable two-factor authentication to secure your account.
+Thank you,
+The Zoom Team`,
+            isRead: false,
+            sentAt: 1666993580000,
+            removedAt: null,
+            from: 'no-reply@zoom.us',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e108',
+            subject: `✨Quiz✨ What's your travel personality?`,
+            body: `Your travel personality, revealed
+            What type of traveler are you? Take our quiz to find out and get a few Travelers' Choice Best of the Best winners to match.\n Take the quiz`,
+            isRead: false,
+            sentAt: 1662965580000,
+            removedAt: null,
+            from: 'notice@tripadvisor.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e109',
+            subject: `Order 3024459134010605: delivery update`,
+            body: `
+            Order update
+            Hi Muki,
+            Order 3024459134010605 has a delivery update. You can view the shipping status below.
+            View update
+            Order details
+            Placed on Jul 15,2023, 12:47`,
+            isRead: false,
+            sentAt: 1663284780000,
+            removedAt: null,
+            from: 'transaction@notice.aliexpress.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e110',
+            subject: `Udacity Password Reset`,
+            body: `
+            Hi Muki,
+            
+            Looks like you'd like to change your Udacity password. Please click the following button to do so.
+            
+            Please disregard this e-mail if you did not request a password reset.
+            SET PASSWORD
+            Or copy this link and paste in your web browser
+            
+            https://auth.udacity.com/reset-password?token=jRQQdcOcksnw1XOhQEze
+            
+            Cheers,
+            The Udacity Team
+            `,
+            isRead: false,
+            sentAt: 1666366380000,
+            removedAt: null,
+            from: 'support@udacity.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e111',
+            subject: `Hi Muki, welcome to Dropbox!
+            `,
+            body: `Verify your email
+            Hi,
+            Enter this code in the next 10 minutes to sign up:
+            066062
+            If you didn't request this code, you can safely ignore this email. Someone else might have typed your email address by mistake.
+            `,
+            isRead: false,
+            sentAt: 1664483180000,
+            removedAt: null,
+            from: 'no-reply@em-s.dropbox.com',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e112',
+            subject: `066062 is your Zoom verification code`,
+            body: `
+            Welcome!
+            Let's get you started
+            We're excited to get you up and running! Whether you're looking to back up your devices or share pics and videos with friends and colleagues, let us show you how easy it can be. Dropbox is made for this stuff.
+            `,
+            isRead: false,
+            sentAt: 1667523180000,
+            removedAt: null,
+            from: 'no-reply@zoom.us',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e113',
+            subject: `Nossos Termos de Uso estão mudando
+            `,
+            body: `
+            Nossos Termos de Uso estão mudando
+            Olá!
+            A BlaBlaCar está em constante evolução para lhe proporcionar sempre mais satisfação e atender às suas necessidades. Por esse motivo, ajustamos regularmente os nossos Termos de Uso e a nossa Política de Privacidade, para garantir que eles permaneçam transparentes para você.
+            
+            Atualizamos os nossos Termos de Uso e a nossa Política de Privacidade para refletir as mudanças em sua experiência na plataforma, introduzindo o novo sistema de reservas para viagens de carona e atualizando as regras para verificação de identidade.
+            
+            Se quiser obter mais informações, convidamos você a ler nossos Termos de Uso atualizados na íntegra clicando aqui e a nossa Política de Privacidade, clicando aqui.
+            
+            Essas alterações entrarão em vigor (i) a partir de 10 de julho de 2023 ou (ii) antes dessa data se você usar a plataforma para reservar um lugar ou publicar uma viagem de carona, quando aplicável.
+            
+            Caso se oponha às alterações, você deve encerrar sua conta antes dessa data. Se continuar a usar a nossa plataforma após essa data, significa que você leu e aceitou os Termos de Uso atualizados.
+            
+            Boas viagens!
+            Equipe BlaBlaCar            
+            `,
+            isRead: false,
+            sentAt: 1665198380000,
+            removedAt: null,
+            from: 'no-reply@blablacar.us',
+            to: 'user@appsus.com',
+            isStarred: false
+        },
+        {
+            id: 'e114',
+            subject: `Che Lagarto Hostel`,
+            body: `
+            Olá, 
+            Você ganhou desconto na sua próximo estadía. Para fazer sua reserva, é só enviar mensagem pelo WhatsApp!    
+            `,
+            isRead: false,
+            sentAt: 1664860780000,
+            removedAt: null,
+            from: 'buzios@chelagarto.com',
+            to: 'user@appsus.com',
+            isStarred: false
         }
+
+
 
 
         ]

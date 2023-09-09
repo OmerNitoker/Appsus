@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail.service.js";
+import { utilService } from "../../../services/util.service.js";
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -34,6 +35,7 @@ export function MailDetails() {
     }
 
     if (!mail) return <div>Loading...</div>
+    const isStarred = mail.isStarred ? 'starred' : ' '
     return (
         <section className="mail-details">
             <span onClick={onBack} className="material-symbols-outlined">
@@ -43,13 +45,13 @@ export function MailDetails() {
                 <span onClick={onRemoveMail} className="material-symbols-outlined">
                     delete
                 </span>
-                <span className="material-symbols-outlined">
+                <span className={isStarred + ' star material-symbols-outlined'}>
                     star
                 </span>
             </div>
             <h2 className="subject">{mail.subject}</h2>
             <h5 className="from">{mail.from}</h5>
-            <h5 className="time">{mail.sentAt}</h5>
+            <h5 className="time">{utilService.formatDate(mail.sentAt)}</h5>
             <h1 className="mail-body">{mail.body}</h1>
         </section>
     )

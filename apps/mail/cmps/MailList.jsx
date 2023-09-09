@@ -6,7 +6,7 @@ export function MailList({ mails, onStar }) {
 
         <ul className="mail-list">
             {mails.map(mail =>
-                <Link key={mail.id} to={`/mail/${mail.id}`}>
+                <Link className={mail.isRead ? 'read' : ''} key={mail.id} to={`/mail/${mail.id}`}>
                     <li> <MailPreview mail={mail} onStar={onStar}/>
                     </li>
                 </Link>)}
