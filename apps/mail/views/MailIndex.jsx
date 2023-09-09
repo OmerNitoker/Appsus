@@ -82,7 +82,7 @@ export function MailIndex() {
 
             <input onChange={handleChange} name="txt" placeholder="   Search mail" className="search"></input>
             <select onChange={handleChange} name="searchBy" className="search-by">
-                <option value="">Search by</option>
+                <option title="Search by" value="">Search by</option>
                 <option value="subject">Subject</option>
                 <option value="from">From</option>
                 <option value="body">Mail body</option>

@@ -24,7 +24,7 @@ export function Home() {
                 </span>
                 <h4>Notes</h4>
             </Link>
-            <Link to={`/note`} className="link">
+            <Link to={`/book`} className="link">
 
                 <span className="material-symbols-outlined">
                     menu_book

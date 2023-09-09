@@ -46,10 +46,7 @@ export function MailDetails() {
 
     function onStar(mailId) {
         mailService.star(mailId)
-            .then(res => {
-                console.log(res)
-                setIsStarred(!isStarred)
-            })
+            .then(setIsStarred(!isStarred))
 
     }
 
