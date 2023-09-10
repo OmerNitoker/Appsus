@@ -1,10 +1,10 @@
 
 const { NavLink } = ReactRouterDOM
 
-export function MenuPreview() {
+export function MenuPreview({setIsMenuOpen}) {
     return (
         <nav className="menu-container flex column">
-            <NavLink to="/">
+            <NavLink onClick={() => setIsMenuOpen (menuState => !menuState)} to="/">
                 <div className="flex space-between align-center">
                     <h4>Home</h4>
                     <span className="material-symbols-outlined">
@@ -12,7 +12,7 @@ export function MenuPreview() {
                     </span>
                 </div>
             </NavLink>
-            <NavLink to="/mail">
+            <NavLink onClick={() => setIsMenuOpen (menuState => !menuState)} to="/mail">
                 <div className="flex space-between align-center">
                     <h4>Mail</h4>
                     <span className="material-symbols-outlined">
@@ -20,7 +20,7 @@ export function MenuPreview() {
                     </span>
                 </div>
             </NavLink>
-            <NavLink to="/note">
+            <NavLink onClick={() => setIsMenuOpen (menuState => !menuState)} to="/note">
                 <div className="flex space-between align-center">
                     <h4>Notes</h4>
                     <span className="material-symbols-outlined">
@@ -28,14 +28,14 @@ export function MenuPreview() {
                     </span>
                 </div>
             </NavLink>
-            <NavLink to="/book">
+            {/* <NavLink onClick={() => setIsMenuOpen (menuState => !menuState)} to="/book">
                 <div className="flex space-between align-center">
                     <h4>Books</h4>
                     <span className="material-symbols-outlined">
                         menu_book
                     </span>
                 </div>
-            </NavLink>
+            </NavLink> */}
         </nav>
     )
 }

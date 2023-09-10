@@ -76,7 +76,6 @@ function _createNotes() {
         notes = [
             {
                 id: 'n101',
-                createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: false,
                 style: { backgroundColor: '#8E9ADA' },
@@ -105,7 +104,51 @@ function _createNotes() {
                     ]
                 },
                 style: { backgroundColor: '#8E9ADA' }
+            },
+            {
+                id: 'n104',
+                type: 'NoteImg',
+                isPinned: false,
+                info: { url: "https://yt3.googleusercontent.com/g5Ytq77hxUy5dbwhGnpNfztjUs3GNz_YSZjcZNtU5XpcsWiJO1YUKAjQuof5CchcdD1Q92Wufw=s900-c-k-c0x00ffffff-no-rj", title: 'React King!' },
+                style: { backgroundColor: '#8E9ADA' }
+            },
+            {
+                id: 'n105',
+                type: 'NoteTxt',
+                isPinned: false,
+                style: { backgroundColor: '#8E9ADA' },
+                info: { txt: 'Under a silvery moon, Mia found a key. It opened a door in a tree. Inside, luminous fairies danced. They whispered ancient secrets and crowned her their friend. Dawn arrived, but the magic lingered in Mias heart forever.' }
+            },
+            {
+                id: 'n106',
+                type: 'NoteTxt',
+                isPinned: false,
+                style: { backgroundColor: '#8E9ADA' },
+                info: { txt: 'Why did the bicycle fall over? It was two-tired!' }
+            },
+            {
+                id: 'n107',
+                type: 'NoteVideo',
+                isPinned: false,
+                info: { url: 'https://www.youtube.com/watch?v=64t1COiCMOo' },
+                style: { backgroundColor: '#8E9ADA' }
+            },
+            {
+                id: 'n108',
+                type: 'NoteImg',
+                isPinned: false,
+                info: { url: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg", title: 'Cute puppy' },
+                style: { backgroundColor: '#8E9ADA' }
+            },
+            {
+                id: 'n109',
+                type: 'NoteTxt',
+                isPinned: false,
+                style: { backgroundColor: '#8E9ADA' },
+                info: { txt: 'The meaning of life varies: a quest for purpose, connection, understanding, happiness, or leaving a legacy. Its a journey, uniquely interpreted by each individual.' }
             }
+
+            
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
     }

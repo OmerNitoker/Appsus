@@ -24,12 +24,12 @@ export function Home() {
                 </span>
                 <h4>Notes</h4>
             </Link>
-            <Link to={`/book`} className="link">
+            <Link to={`/`} className="link">
 
                 <span className="material-symbols-outlined">
                     menu_book
                 </span>
-                <h4>Book Store</h4>
+                <h4>Book Store - soon!</h4>
             </Link>
 
 

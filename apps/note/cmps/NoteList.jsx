@@ -29,18 +29,18 @@ export function NoteList({ notes, onRemoveNote, onTogglePin, onChangeColor, onDu
                         <span className={"material-symbols-outlined" + (note.isPinned ? " selected-icon" : '')} onClick={() => onTogglePin(note.id)}>
                             push_pin
                         </span>
-                        <span className="material-symbols-outlined">
+                        {/* <span className="material-symbols-outlined">
                             edit_note
-                        </span>
+                        </span> */}
                         <span className="material-symbols-outlined" onClick={() => onDuplicateNote(note)}>
                             content_copy
                         </span>
                         <span className="material-symbols-outlined" onClick={() => onRemoveNote(note.id)}>
                             delete
                         </span>
-                        <span className="material-symbols-outlined">
+                        {/* <span className="material-symbols-outlined">
                             outgoing_mail
-                        </span>
+                        </span> */}
                     </section>
                 </li>
             ))}

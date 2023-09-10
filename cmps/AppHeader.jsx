@@ -19,7 +19,7 @@ export function AppHeader() {
                     apps
                 </span>
                 <div className="menu-header">
-                    {isMenuOpen && <MenuPreview />}
+                    {isMenuOpen && <MenuPreview setIsMenuOpen={setIsMenuOpen} />}
                 </div>
             </div>
         </header>
